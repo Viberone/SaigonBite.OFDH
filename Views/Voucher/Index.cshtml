@@ -1,0 +1,63 @@
+﻿@using SaigonBite.OFDH.Domain
+@model List<Voucher>
+@{
+    ViewData["Title"] = "Vouchers";
+}
+
+<h2>Vouchers</h2>
+
+@if (TempData["Error"] is string err)
+{
+    <div class="alert alert-danger">@err</div>
+}
+
+<p><a asp-action="Create" class="btn btn-primary">Create voucher</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Discount</th>
+            <th>Min order</th>
+            <th>Valid</th>
+            <th>Used</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            var closed = v.Status is VoucherStatus.Expired or VoucherStatus.Deactivated;
+            <tr class="@(closed ? "table-secondary text-muted" : "")">
+                <td>@v.Code</td>
+                <td>
+                    @(v.Type == VoucherType.Percentage ? $"{v.Value:0.##}%" : v.Value.ToString("N0"))
+                    @if (v.MaxDiscount.HasValue)
+                    {
+                        <span class="small">(max @v.MaxDiscount.Value.ToString("N0"))</span>
+                    }
+                </td>
+                <td>@v.MinOrderValue.ToString("N0")</td>
+                <td>@v.ValidFrom.ToString("yyyy-MM-dd") to @v.ValidTo.ToString("yyyy-MM-dd")</td>
+                <td>@v.UsedCount / @v.UsageLimit</td>
+                <td>@v.Status</td>
+                <td>
+                    @if (v.Status == VoucherStatus.Draft)
+                    {
+                        <a asp-action="Edit" asp-route-id="@v.VoucherId">Edit</a>
+                        <form asp-action="Activate" asp-route-id="@v.VoucherId" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-link p-0 ms-2">Activate</button>
+                        </form>
+                    }
+                    @if (v.Status is VoucherStatus.Draft or VoucherStatus.Active)
+                    {
+                        <form asp-action="Deactivate" asp-route-id="@v.VoucherId" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-link p-0 ms-2">Deactivate</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
