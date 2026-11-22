@@ -1,0 +1,65 @@
+---
+title: UC10 Deliver an Order, design class diagram, first cut (author 523C0001, AI-assisted)
+---
+classDiagram
+    direction LR
+    namespace View {
+        class ShipperBoardView {
+            <<view>>
+            ready orders, my deliveries, shift cash
+        }
+        class CompleteDeliveryView {
+            <<view>>
+            order, amount to collect
+        }
+    }
+    namespace Controller {
+        class DeliveryController {
+            <<controller>>
+            -ICurrentUser user
+            -IClock clock
+        }
+    }
+    namespace Domain {
+        class Delivery {
+            +int Id
+            +int OrderId
+            +int ShipperId
+            +DeliveryStatus Status
+            +DateTime AssignedAt
+            +DateTime? PickedUpAt
+            +DateTime? FinishedAt
+            +int? CashCollected
+            +string FailureReason
+        }
+        class Order {
+            +int Id
+            +OrderStatus Status
+            +PaymentMethod PaymentMethod
+            +int Total
+        }
+        class Payment {
+            +PaymentStatus Status
+            +string GatewayRef
+        }
+        class Shipper {
+            +int Id
+            +int HubId
+        }
+    }
+    namespace DataAccess {
+        class DeliveryDAO {
+            <<data access>>
+        }
+        class OrderDAO {
+            <<data access>>
+        }
+    }
+    ShipperBoardView ..> DeliveryController
+    CompleteDeliveryView ..> DeliveryController
+    DeliveryController --> DeliveryDAO
+    DeliveryController --> OrderDAO
+    DeliveryController ..> Delivery
+    Delivery "0..1" --> "1" Order
+    Delivery "0..*" --> "1" Shipper
+    Order "1" --> "1" Payment

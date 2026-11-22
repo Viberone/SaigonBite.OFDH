@@ -1,0 +1,31 @@
+---
+title: UC15 Sequence diagram, data access · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor A as :Admin
+    participant EV as :VoucherEditView
+    participant VC as :VoucherController
+    participant V as :Voucher
+    participant D as :VoucherDAO
+    participant DB as SQLite
+    A->>EV: fill the form, click Save
+    EV->>VC: POST Create(form)
+    VC->>V: Validate()
+    VC->>D: CodeExists(code)
+    D->>DB: SELECT COUNT(*) FROM voucher WHERE code = ?
+    alt invalid
+        VC-->>EV: show errors
+    else
+        VC->>D: Insert(voucher)
+        D->>DB: INSERT INTO voucher (... status = 'Draft')
+        D-->>VC: voucherId
+        VC-->>A: Details view (Draft)
+    end
+    A->>VC: POST Activate(voucherId)
+    VC->>D: GetById(voucherId)
+    D->>DB: SELECT * FROM voucher WHERE voucher_id = ?
+    D-->>VC: voucher
+    VC->>V: Activate(today)
+    VC->>D: Update(voucher)
+    D->>DB: UPDATE voucher SET status = 'Active' WHERE voucher_id = ?
+    VC-->>A: Details view (Active)

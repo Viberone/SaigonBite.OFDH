@@ -1,0 +1,86 @@
+---
+title: UC10 Deliver an Order, final design class diagram (author 523C0001, AI-assisted)
+---
+classDiagram
+    direction LR
+    class DeliveryController {
+        <<controller>>
+        +Index() IActionResult
+        +Accept(orderId) IActionResult
+        +PickUp(id) IActionResult
+        +Complete(id) IActionResult
+        +Complete(id, cashCollected) IActionResult
+        +Fail(id, reason) IActionResult
+        -Load(id) (Delivery, Order)
+        -Step(id, action) IActionResult
+    }
+    class Delivery {
+        +DeliveryStatus Status
+        +int? CashCollected
+        +string FailureReason
+        +Assign(order, shipper, now)$ Delivery
+        +PickUp(now)
+        +Complete(method, orderTotal, cashCollected, now)
+        +Fail(reason, now)
+    }
+    class DeliveryStatus {
+        <<enumeration>>
+        Assigned
+        PickedUp
+        Delivered
+        Failed
+    }
+    class Order {
+        +OrderStatus Status
+        +int Total
+        +PickUp()
+        +Deliver(now)
+        +FailDelivery(reason, now)
+    }
+    class Payment {
+        +PaymentStatus Status
+        +string GatewayRef
+        +Settle()
+        +Void()
+    }
+    class Staff {
+        +StaffRole Role
+        +int? HubId
+    }
+    class DeliveryDAO {
+        <<data access>>
+        +TryInsert(delivery) bool
+        +SaveProgress(delivery, order, payment, now)
+        +GetById(id) Delivery
+        +GetByOrder(orderId) Delivery
+        +GetOpenForShipper(shipperId) List~Delivery~
+        +ShiftSummary(shipperId, day) tuple
+    }
+    class OrderDAO {
+        <<data access>>
+        +GetReadyUnassigned(hubId) List~Order~
+        +GetById(orderId) Order
+        +GetPayment(orderId) Payment
+    }
+    class IPaymentGateway {
+        <<interface>>
+        +Capture(gatewayRef)
+        +Void(gatewayRef)
+    }
+    class ShipperBoardVM {
+        <<view model>>
+        +List~Order~ Ready
+        +List~DeliveryCard~ Mine
+        +Shift
+    }
+    DeliveryController --> DeliveryDAO
+    DeliveryController --> OrderDAO
+    DeliveryController --> IPaymentGateway
+    DeliveryController ..> ShipperBoardVM
+    DeliveryController ..> Delivery
+    Delivery --> DeliveryStatus
+    Delivery ..> Order
+    Delivery ..> Staff
+    Order "1" --> "1" Payment
+    DeliveryDAO ..> Delivery
+    OrderDAO ..> Order

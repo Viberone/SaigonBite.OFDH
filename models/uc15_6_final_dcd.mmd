@@ -1,0 +1,79 @@
+---
+title: UC15 Manage Vouchers, final design class diagram (author 523C0007, AI-assisted)
+---
+classDiagram
+    direction LR
+    class VoucherController {
+        <<controller>>
+        +Index(status) IActionResult
+        +Details(id) IActionResult
+        +Create() IActionResult
+        +Create(form Voucher) IActionResult
+        +Edit(id) IActionResult
+        +Edit(id, form Voucher) IActionResult
+        +Activate(id) IActionResult
+        +Deactivate(id) IActionResult
+        +Delete(id) IActionResult
+        -Transition(id, change, done) IActionResult
+    }
+    class Voucher {
+        +string Code
+        +DiscountType DiscountType
+        +int DiscountValue
+        +int? MaxDiscount
+        +int MinOrderValue
+        +DateOnly StartDate
+        +DateOnly EndDate
+        +int UsageLimit
+        +int UsedCount
+        +VoucherStatus StoredStatus
+        +StatusOn(today) VoucherStatus
+        +Activate(today)
+        +Deactivate(today)
+        +bool CanDelete
+        +bool CanEditTerms
+        +CanEdit(today) bool
+        +Validate() List~string~
+        +CheckUsable(foodSubtotal, today, usedBefore) string
+        +DiscountFor(foodSubtotal) int
+    }
+    class VoucherStatus {
+        <<enumeration>>
+        Draft
+        Active
+        Expired
+        Deactivated
+    }
+    class DiscountType {
+        <<enumeration>>
+        Percent
+        Fixed
+    }
+    class VoucherDAO {
+        <<data access>>
+        +GetAll() List~Voucher~
+        +GetById(id) Voucher
+        +GetByCode(code) Voucher
+        +CodeExists(code, exceptId) bool
+        +Insert(voucher) int
+        +Update(voucher)
+        +Delete(id) bool
+    }
+    class VoucherEditVM {
+        <<view model>>
+        +Voucher Voucher
+        +bool IsNew
+        +List~string~ Errors
+    }
+    class IClock {
+        <<interface>>
+        +DateTime Now
+        +DateOnly Today
+    }
+    VoucherController --> VoucherDAO
+    VoucherController --> IClock
+    VoucherController ..> VoucherEditVM
+    VoucherController ..> Voucher
+    Voucher --> VoucherStatus
+    Voucher --> DiscountType
+    VoucherDAO ..> Voucher

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SaigonBite.Web/SaigonBite.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SaigonBite.Tests/SaigonBite.Tests.csproj" />
+  </Folder>
+</Solution>

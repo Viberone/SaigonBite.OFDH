@@ -1,0 +1,22 @@
+---
+title: UC16 Sequence diagram, data access · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor M as :Manager
+    participant RV as :ReportView
+    participant RC as :ReportController
+    participant HD as :HubDAO
+    participant RD as :ReportDAO
+    participant DB as SQLite
+    M->>RV: choose dates and hub, click "Show reports"
+    RV->>RC: GET Index(from, to, hubId)
+    RC->>RD: Build(from, to, hubId)
+    RD->>DB: SELECT hub LEFT JOIN orders (Delivered) GROUP BY hub
+    RD->>DB: SELECT hub LEFT JOIN orders, peak and busiest-day counts GROUP BY hub
+    RD->>DB: SELECT hub LEFT JOIN orders JOIN delivery, julianday() minutes GROUP BY hub
+    RD->>DB: SELECT order_line JOIN orders JOIN menu_item ORDER BY quantity LIMIT 5
+    RD-->>RC: ManagementReport
+    RC->>HD: GetAll()
+    HD->>DB: SELECT hub
+    RC-->>RV: ReportVM
+    RV-->>M: KPI tiles and four report tables

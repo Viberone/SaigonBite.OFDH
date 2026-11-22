@@ -1,0 +1,54 @@
+@model ShipperBoardVM
+@{ ViewData["Title"] = "My deliveries"; }
+<h1>Deliveries · @Model.Hub.Name</h1>
+<p class="text-muted">@Model.Shipper.FullName · today: @Model.Shift.Delivered delivered, @Model.Shift.Failed failed, <b>@Vnd(Model.Shift.Cash) cash to hand in</b> at the end of the shift.
+    <span class="uc-tag">UC10 Deliver an Order · 523C0001</span></p>
+<div class="row g-4">
+    <div class="col-lg-6">
+        <h2 class="h5">My open deliveries (@Model.Mine.Count)</h2>
+        @if (Model.Mine.Count == 0)
+        {
+            <p class="text-muted">None. Take a ready order on the right.</p>
+        }
+        @foreach (var c in Model.Mine)
+        {
+            var o = c.Order;
+            <div class="card p-3 mb-3">
+                <div class="d-flex justify-content-between">
+                    <b>Order #@o.Id · @o.CustomerName</b>
+                    <span class="badge text-bg-primary">@c.Delivery.Status</span>
+                </div>
+                <div>@o.DeliveryStreet, @o.DeliveryDistrict · @o.DistanceKm.ToString("0.0") km</div>
+                <div class="mb-2">@(o.PaymentMethod == PaymentMethod.COD ? "Collect " + Vnd(o.Total) + " in cash" : "Paid online (" + o.PaymentMethod + ")")</div>
+                @if (c.Delivery.Status == DeliveryStatus.Assigned)
+                {
+                    <form method="post" asp-action="PickUp" asp-route-id="@c.Delivery.Id"><button class="btn btn-primary btn-sm">Picked up from the hub</button></form>
+                }
+                else
+                {
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a class="btn btn-accent btn-sm" asp-action="Complete" asp-route-id="@c.Delivery.Id">Delivered</a>
+                        <form method="post" asp-action="Fail" asp-route-id="@c.Delivery.Id" class="d-flex gap-1">
+                            <select name="reason" class="form-select form-select-sm">
+                                <option>Customer did not answer for 10 minutes</option>
+                                <option>Address could not be found</option>
+                                <option>Customer refused the order</option>
+                            </select>
+                            <button class="btn btn-outline-danger btn-sm">Report failure</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="col-lg-6">
+        <h2 class="h5">Ready for pickup (@Model.Ready.Count)</h2>
+        @foreach (var o in Model.Ready)
+        {
+            <div class="card p-3 mb-2 d-flex flex-row justify-content-between align-items-center">
+                <div><b>#@o.Id</b> · @o.DeliveryDistrict · @o.DistanceKm.ToString("0.0") km · ready @o.ReadyAt?.ToString("HH:mm")</div>
+                <form method="post" asp-action="Accept"><input type="hidden" name="orderId" value="@o.Id" /><button class="btn btn-sm btn-primary">Take it</button></form>
+            </div>
+        }
+    </div>
+</div>

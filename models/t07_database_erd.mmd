@@ -1,0 +1,138 @@
+---
+title: Database tables mapped from the persistent domain classes (team F6, AI-assisted)
+---
+erDiagram
+    CUSTOMER ||--|{ ADDRESS : has
+    CUSTOMER ||--o{ ORDERS : places
+    HUB ||--o{ ORDERS : cooks
+    HUB ||--o{ HUB_MENU_ITEM : offers
+    MENU_ITEM ||--o{ HUB_MENU_ITEM : "offered at"
+    BRAND ||--|{ MENU_ITEM : owns
+    ORDERS ||--|{ ORDER_LINE : contains
+    MENU_ITEM ||--o{ ORDER_LINE : "ordered in"
+    VOUCHER |o--o{ ORDERS : "applied to"
+    ORDERS ||--|| PAYMENT : "paid by"
+    ORDERS ||--o| DELIVERY : "delivered by"
+    STAFF ||--o{ DELIVERY : "shipper makes"
+    HUB ||--o{ STAFF : employs
+    HUB ||--o{ DISTRICT_DISTANCE : "map data"
+    ORDERS ||--o{ COMPLAINT : about
+    STAFF |o--o{ COMPLAINT : decides
+    STAFF |o--o{ VOUCHER : creates
+    CUSTOMER {
+        int customer_id PK
+        text customer_type "Local or Tourist"
+        text full_name
+        text email
+        text phone
+        text passport_no
+        text nationality
+    }
+    ADDRESS {
+        int address_id PK
+        int customer_id FK
+        text street
+        text district
+        int is_hotel
+    }
+    HUB {
+        int hub_id PK
+        text name
+        text district
+        int capacity
+        int rain_surcharge_on
+    }
+    BRAND {
+        int brand_id PK
+        text name
+    }
+    MENU_ITEM {
+        int item_id PK
+        int brand_id FK
+        text name_vi
+        text name_en
+        int price
+    }
+    HUB_MENU_ITEM {
+        int hub_id PK, FK
+        int item_id PK, FK
+        int is_available
+    }
+    ORDERS {
+        int order_id PK
+        int customer_id FK
+        int hub_id FK
+        int voucher_id FK
+        text status
+        text payment_method
+        int food_subtotal
+        int delivery_fee
+        int quiet_discount
+        int voucher_discount
+        int surcharge
+        int total
+        text placed_at
+        text closed_at
+    }
+    ORDER_LINE {
+        int order_id PK, FK
+        int line_no PK
+        int item_id FK
+        int quantity
+        int unit_price
+    }
+    VOUCHER {
+        int voucher_id PK
+        text code UK
+        text discount_type
+        int discount_value
+        int max_discount
+        int min_order_value
+        text start_date
+        text end_date
+        int usage_limit
+        int used_count
+        text status
+        int created_by FK
+    }
+    PAYMENT {
+        int payment_id PK
+        int order_id FK, UK
+        text method
+        int amount
+        text status
+        text gateway_ref
+    }
+    DELIVERY {
+        int delivery_id PK
+        int order_id FK, UK
+        int shipper_id FK
+        text status
+        text assigned_at
+        text picked_up_at
+        text finished_at
+        int cash_collected
+        text failure_reason
+    }
+    STAFF {
+        int staff_id PK
+        text role
+        int hub_id FK
+        text full_name
+    }
+    DISTRICT_DISTANCE {
+        int hub_id PK, FK
+        text district PK
+        real distance_km
+    }
+    COMPLAINT {
+        int complaint_id PK
+        int order_id FK
+        text status
+        int refund_amount
+        int decided_by FK
+    }
+    BUSINESS_RULE {
+        text rule_key PK
+        real rule_value
+    }

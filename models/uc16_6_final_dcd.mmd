@@ -1,0 +1,64 @@
+---
+title: UC16 Produce Management Reports, final design class diagram (author 523C0001, AI-assisted)
+---
+classDiagram
+    direction LR
+    class ReportController {
+        <<controller>>
+        +Index(from, to, hubId) IActionResult
+    }
+    class ReportVM {
+        <<view model>>
+        +ManagementReport Report
+        +List~Hub~ Hubs
+        +List~string~ Errors
+    }
+    class ManagementReport {
+        +DateOnly From
+        +DateOnly To
+        +int? HubId
+        +List~SalesRow~ Sales
+        +List~WorkloadRow~ Workload
+        +List~DeliveryRow~ Delivery
+        +List~TopItemRow~ TopItems
+        +SalesRow SalesTotal
+    }
+    class SalesRow {
+        +long Revenue
+        +long AverageOrder
+    }
+    class WorkloadRow {
+        +double PeakShare
+        +double RejectRate
+    }
+    class DeliveryRow {
+        +double OnTimeRate
+        +double FailRate
+    }
+    class TopItemRow
+    class ReportDAO {
+        <<data access>>
+        +Build(from, to, hubId) ManagementReport
+        +Sales(from, to, hubId) List~SalesRow~
+        +Workload(from, to, hubId) List~WorkloadRow~
+        +DeliveryPerformance(from, to, hubId) List~DeliveryRow~
+        +TopItems(from, to, hubId, top) List~TopItemRow~
+    }
+    class HubDAO {
+        <<data access>>
+        +GetAll() List~Hub~
+    }
+    class IClock {
+        <<interface>>
+        +DateOnly Today
+    }
+    ReportController --> ReportDAO
+    ReportController --> HubDAO
+    ReportController --> IClock
+    ReportController ..> ReportVM
+    ReportVM --> ManagementReport
+    ReportDAO ..> ManagementReport
+    ManagementReport *-- SalesRow
+    ManagementReport *-- WorkloadRow
+    ManagementReport *-- DeliveryRow
+    ManagementReport *-- TopItemRow

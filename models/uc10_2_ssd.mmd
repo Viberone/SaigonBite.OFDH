@@ -1,0 +1,21 @@
+---
+title: UC10 SSD · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor SH as :Shipper
+    participant S as :System
+    SH->>S: viewReadyOrders()
+    S-->>SH: ready orders (orderId, district, distance, ready time), my open deliveries
+    SH->>S: acceptOrder(orderId)
+    S-->>SH: delivery (status = Assigned) or "taken by another shipper"
+    SH->>S: pickUp(deliveryId)
+    S-->>SH: address, amount to collect, order status = OutForDelivery
+    alt customer reached
+        loop until the cash amount is correct
+            SH->>S: confirmDelivered(deliveryId, cashCollected)
+            S-->>SH: delivered, cash recorded, or "amount must equal the total"
+        end
+    else customer not reached
+        SH->>S: reportFailure(deliveryId, reason)
+        S-->>SH: delivery Failed, order DeliveryFailed
+    end

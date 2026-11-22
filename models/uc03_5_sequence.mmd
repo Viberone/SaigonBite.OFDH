@@ -1,0 +1,34 @@
+---
+title: UC03 Sequence diagram · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor C as :Customer
+    participant OC as :OrderController
+    participant H as :Hub
+    participant PC as :PriceCalculator
+    participant V as :Voucher
+    participant O as :Order
+    participant P as :Payment
+    participant G as :IPaymentGateway
+    C->>OC: Quote(form)
+    OC->>H: IsBusy(rules)
+    H-->>OC: false
+    OC->>V: CheckUsable(foodSubtotal, today, usedBefore)
+    V-->>OC: null (usable)
+    OC->>PC: Quote(hub, lines, distanceKm, voucher)
+    PC->>PC: DeliveryFee(distanceKm)
+    PC->>H: IsQuiet(rules)
+    PC->>V: DiscountFor(foodSubtotal)
+    PC-->>OC: quote: PriceQuote
+    OC-->>C: Quote view (full price)
+    C->>OC: Place(form)
+    Note over OC: validates and prices again (availability, voucher or load may have changed)
+    OC->>O: Order.Place(customer, hub, address, lines, quote, method, now)
+    O-->>OC: order (Placed)
+    OC->>P: new Payment(method, total)
+    opt method is EWallet or Card
+        OC->>G: Authorise(method, total, customerRef)
+        G-->>OC: gatewayRef
+        OC->>P: Authorised(gatewayRef)
+    end
+    OC-->>C: redirect to Details(orderId)

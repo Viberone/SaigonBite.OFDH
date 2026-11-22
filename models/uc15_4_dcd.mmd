@@ -1,0 +1,58 @@
+---
+title: UC15 Manage Vouchers, design class diagram, first cut (author 523C0007, AI-assisted)
+---
+classDiagram
+    direction LR
+    namespace View {
+        class VoucherListView {
+            <<view>>
+            vouchers, statusFilter
+        }
+        class VoucherDetailsView {
+            <<view>>
+            voucher, allowed actions
+        }
+        class VoucherEditView {
+            <<view>>
+            form fields, errors
+        }
+    }
+    namespace Controller {
+        class VoucherController {
+            <<controller>>
+            -ICurrentUser user
+            -IClock clock
+        }
+    }
+    namespace Domain {
+        class Voucher {
+            +int Id
+            +string Code
+            +string Description
+            +DiscountType DiscountType
+            +int DiscountValue
+            +int? MaxDiscount
+            +int MinOrderValue
+            +DateOnly StartDate
+            +DateOnly EndDate
+            +int UsageLimit
+            +int UsedCount
+            +VoucherStatus StoredStatus
+        }
+        class Admin {
+            +int Id
+            +string FullName
+        }
+    }
+    namespace DataAccess {
+        class VoucherDAO {
+            <<data access>>
+        }
+    }
+    VoucherListView ..> VoucherController
+    VoucherEditView ..> VoucherController
+    VoucherController ..> VoucherDetailsView
+    VoucherController --> VoucherDAO
+    VoucherController ..> Voucher
+    VoucherDAO ..> Voucher
+    Admin "1" --> "0..*" Voucher : creates

@@ -1,0 +1,9 @@
+{
+  "name": "saigonbite-tools",
+  "private": true,
+  "description": "Diagram rendering (Mermaid) and UI screenshots for the SaigonBite Part 2 report",
+  "dependencies": {
+    "mermaid": "11.14.0",
+    "puppeteer-core": "24.43.1"
+  }
+}

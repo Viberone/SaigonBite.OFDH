@@ -1,0 +1,39 @@
+---
+title: Organization and project chart (team F6, AI-assisted)
+---
+flowchart TB
+    subgraph CLIENT["SaigonBite (client)"]
+        direction TB
+        OWN["Owner / board<br/><i>approves the project, funds it</i>"]
+        OPS["Operations manager<br/><i>uses management reports (UC16)</i>"]
+        ADM["System administrator<br/><i>maintains vouchers, hubs, menus (UC15)</i>"]
+        OFF["Office staff<br/><i>complaints and refunds</i>"]
+        HUB["Hub team (x3 hubs)"]
+        KIT["Kitchen staff<br/><i>confirm, cook, mark ready</i>"]
+        SHP["Shippers<br/><i>deliver, collect cash (UC10)</i>"]
+        OWN --> OPS
+        OPS --> ADM
+        OPS --> OFF
+        OPS --> HUB
+        HUB --> KIT
+        HUB --> SHP
+    end
+    subgraph EXT["External"]
+        direction TB
+        CUS["Customers<br/><i>local customers and foreign tourists (UC03)</i>"]
+        PAY["Payment providers<br/><i>e-wallets, card gateway</i>"]
+        MAP["Map / distance service"]
+    end
+    subgraph PROJ["Project team F6"]
+        direction TB
+        LEC["Mr. Trung Pham<br/><i>lecturer, acting as client</i>"]
+        DUC["Nguyen Minh Duc · 523C0007<br/>Project coordinator<br/>UC03 Place an Order, UC15 Manage Vouchers"]
+        MINH["Nguyen Hoang Minh · 523C0001<br/>Technical lead<br/>UC10 Deliver an Order, UC16 Management Reports"]
+        LEC --> DUC
+        LEC --> MINH
+        DUC <-->|"daily stand-up,<br/>cross-review"| MINH
+    end
+    OWN -. "requirements,<br/>approval" .-> LEC
+    CUS -. "order" .-> HUB
+    classDef team fill:#FDEBDD,stroke:#C2410C,color:#1F2937
+    class DUC,MINH team

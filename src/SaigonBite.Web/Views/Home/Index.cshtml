@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Choose a user";
+    var customers = (List<Customer>)ViewBag.Customers;
+    var staff = (List<Staff>)ViewBag.Staff;
+}
+<h1>SaigonBite Online Food Delivery Hub</h1>
+<p class="lead">Demo prototype. Pick a seeded user to act in that role. Passwords are out of scope for this release.</p>
+@if (ViewBag.Denied is string denied)
+{
+    <div class="alert alert-warning">That page is for the <b>@denied</b> role. Choose a matching user.</div>
+}
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card p-3 h-100">
+            <h2 class="h5">Customers <span class="uc-tag">UC02, UC03, UC04, UC05</span></h2>
+            @foreach (var c in customers)
+            {
+                <form method="post" asp-action="Login" class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <input type="hidden" name="who" value="C:@c.Id" />
+                    <div><b>@c.FullName</b> <span class="badge text-bg-light">@c.CustomerType</span></div>
+                    <button class="btn btn-sm btn-accent">Order as @c.FullName.Split(' ').Last()</button>
+                </form>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3 h-100">
+            <h2 class="h5">Staff</h2>
+            @foreach (var s in staff.Where(s => s.Role != StaffRole.Office))
+            {
+                var uc = s.Role switch { StaffRole.Kitchen => "UC07, UC08", StaffRole.Shipper => "UC10", StaffRole.Admin => "UC15", StaffRole.Manager => "UC16", _ => "" };
+                <form method="post" asp-action="Login" class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <input type="hidden" name="who" value="S:@s.Id" />
+                    <div><b>@s.FullName</b> · @s.Role @(s.HubId is int h ? $"(hub {h})" : "") <span class="uc-tag">@uc</span></div>
+                    <button class="btn btn-sm btn-primary">Sign in</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>

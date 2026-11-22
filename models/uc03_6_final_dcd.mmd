@@ -1,0 +1,123 @@
+---
+title: UC03 Place an Order, final design class diagram (author 523C0007, AI-assisted)
+---
+classDiagram
+    direction LR
+    class OrderController {
+        <<controller>>
+        +New(hubId) IActionResult
+        +Quote(form OrderForm) IActionResult
+        +Place(form OrderForm) IActionResult
+        +Index() IActionResult
+        +Details(id) IActionResult
+        +Cancel(id) IActionResult
+        -Price(form) OrderPageVM
+        -BusyPage(hub, rules) HubBusyVM
+    }
+    class OrderForm {
+        <<view model>>
+        +int HubId
+        +Dictionary~int,int~ Quantities
+        +int AddressId
+        +string VoucherCode
+        +PaymentMethod PaymentMethod
+    }
+    class Order {
+        +int Id
+        +OrderStatus Status
+        +int Total
+        +List~OrderLine~ Lines
+        +Place(customer, hub, address, lines, quote, method, now)$ Order
+        +Cancel(now)
+        +Confirm(now)
+        +Reject(reason, now)
+        +StartPreparing()
+        +MarkReady(now)
+        +PickUp()
+        +Deliver(now)
+        +FailDelivery(reason, now)
+        +bool CanCancel
+    }
+    class OrderLine {
+        +int ItemId
+        +int Quantity
+        +int UnitPrice
+        +int LineTotal
+    }
+    class Hub {
+        +int Capacity
+        +int ActiveOrders
+        +double Load
+        +IsBusy(rules) bool
+        +IsQuiet(rules) bool
+    }
+    class Customer {
+        <<abstract>>
+        +AllowedPaymentMethods IReadOnlyList
+        +CanPayWith(method) bool
+    }
+    class Voucher {
+        +StatusOn(today) VoucherStatus
+        +CheckUsable(foodSubtotal, today, usedBefore) string
+        +DiscountFor(foodSubtotal) int
+    }
+    class PriceCalculator {
+        -BusinessRules rules
+        +DeliveryFee(distanceKm) int
+        +QuietDiscount(hub, foodSubtotal) int
+        +Quote(hub, lines, distanceKm, voucher) PriceQuote
+    }
+    class Payment {
+        +PaymentStatus Status
+        +string GatewayRef
+        +Authorised(gatewayRef)
+        +Settle()
+        +Void()
+    }
+    class OrderDAO {
+        <<data access>>
+        +InsertPlaced(order, payment, busyLoad) int
+        +SaveStatus(order, payment, now)
+        +GetById(orderId) Order
+        +GetByCustomer(customerId) List~Order~
+        +CustomerUsedVoucher(customerId, voucherId) bool
+        +GetPayment(orderId) Payment
+    }
+    class HubDAO {
+        <<data access>>
+        +GetAll() List~Hub~
+        +GetById(hubId) Hub
+    }
+    class MenuItemDAO {
+        <<data access>>
+        +GetMenu(hubId) List~MenuItem~
+    }
+    class VoucherDAO {
+        <<data access>>
+        +GetByCode(code) Voucher
+    }
+    class IMapService {
+        <<interface>>
+        +DistanceKm(hubId, district) double
+    }
+    class IPaymentGateway {
+        <<interface>>
+        +Authorise(method, amount, customerRef) string
+        +Void(gatewayRef)
+    }
+    OrderController ..> OrderForm
+    OrderController --> OrderDAO
+    OrderController --> HubDAO
+    OrderController --> MenuItemDAO
+    OrderController --> VoucherDAO
+    OrderController --> IMapService
+    OrderController --> IPaymentGateway
+    OrderController ..> PriceCalculator
+    OrderController ..> Order
+    Order "1" *-- "1..*" OrderLine
+    Order "1" --> "1" Payment
+    PriceCalculator ..> Hub
+    PriceCalculator ..> Voucher
+    Order ..> Customer
+    OrderDAO ..> Order
+    OrderDAO ..> Payment

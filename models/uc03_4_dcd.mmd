@@ -1,0 +1,96 @@
+---
+title: UC03 Place an Order, design class diagram, first cut (author 523C0007, AI-assisted)
+---
+classDiagram
+    direction LR
+    namespace View {
+        class OrderNewView {
+            <<view>>
+            menu, addresses, paymentMethods
+        }
+        class OrderQuoteView {
+            <<view>>
+            lines, priceQuote
+        }
+        class OrderDetailsView {
+            <<view>>
+            receipt, tracking
+        }
+    }
+    namespace Controller {
+        class OrderController {
+            <<controller>>
+            -ICurrentUser user
+            -IClock clock
+        }
+    }
+    namespace Domain {
+        class Customer {
+            <<abstract>>
+            +int Id
+            +string FullName
+            +List~Address~ Addresses
+        }
+        class Hub {
+            +int Id
+            +int Capacity
+            +int ActiveOrders
+            +bool RainSurchargeOn
+        }
+        class Order {
+            +int Id
+            +OrderStatus Status
+            +PaymentMethod PaymentMethod
+            +int Total
+            +DateTime PlacedAt
+        }
+        class OrderLine {
+            +int ItemId
+            +int Quantity
+            +int UnitPrice
+        }
+        class Voucher {
+            +string Code
+            +DiscountType DiscountType
+            +int DiscountValue
+            +int MinOrderValue
+        }
+        class Payment {
+            +PaymentMethod Method
+            +int Amount
+            +PaymentStatus Status
+        }
+        class PriceCalculator {
+            -BusinessRules rules
+        }
+        class PriceQuote {
+            +int FoodSubtotal
+            +int DeliveryFee
+            +int QuietDiscount
+            +int VoucherDiscount
+            +int Surcharge
+        }
+    }
+    namespace DataAccess {
+        class OrderDAO
+        class HubDAO
+        class VoucherDAO
+        class MenuItemDAO
+    }
+    OrderNewView ..> OrderController : posts to
+    OrderQuoteView ..> OrderController : posts to
+    OrderController ..> OrderDetailsView : shows
+    OrderController --> Customer
+    OrderController --> PriceCalculator
+    OrderController --> OrderDAO
+    OrderController --> HubDAO
+    OrderController --> VoucherDAO
+    OrderController --> MenuItemDAO
+    PriceCalculator ..> PriceQuote : creates
+    PriceCalculator ..> Hub
+    PriceCalculator ..> Voucher
+    Order "1" *-- "1..*" OrderLine
+    Order "1" --> "1" Payment
+    Order "0..*" --> "0..1" Voucher
+    Order "0..*" --> "1" Hub
+    Customer "1" --> "0..*" Order

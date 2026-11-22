@@ -1,0 +1,33 @@
+@model VoucherListVM
+@{
+    ViewData["Title"] = "Vouchers";
+    string Badge(VoucherStatus s) => s switch { VoucherStatus.Active => "text-bg-success", VoucherStatus.Draft => "text-bg-secondary", VoucherStatus.Expired => "text-bg-warning", _ => "text-bg-danger" };
+}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Vouchers</h1>
+    <a class="btn btn-accent" asp-action="Create">New voucher</a>
+</div>
+<p class="text-muted"><span class="uc-tag">UC15 Manage Vouchers · 523C0007 · create, view, update, deactivate or delete</span></p>
+<div class="mb-3">
+    <a class="btn btn-sm @(Model.Filter == null ? "btn-primary" : "btn-outline-primary")" asp-action="Index">All</a>
+    @foreach (var s in Enum.GetValues<VoucherStatus>())
+    {
+        <a class="btn btn-sm @(Model.Filter == s.ToString() ? "btn-primary" : "btn-outline-primary")" asp-action="Index" asp-route-status="@s">@s</a>
+    }
+</div>
+<table class="table bg-white align-middle">
+    <thead><tr><th>Code</th><th>Discount</th><th>Min. order</th><th>Valid</th><th>Used</th><th>Status</th><th></th></tr></thead>
+    @foreach (var v in Model.Vouchers)
+    {
+        var s = v.StatusOn(Model.Today);
+        <tr>
+            <td><b>@v.Code</b><br /><span class="small text-muted">@v.Description</span></td>
+            <td>@v.DiscountText</td>
+            <td>@Vnd(v.MinOrderValue)</td>
+            <td class="small">@v.StartDate.ToString("dd/MM/yyyy") – @v.EndDate.ToString("dd/MM/yyyy")</td>
+            <td>@v.UsedCount / @v.UsageLimit</td>
+            <td><span class="badge @Badge(s)">@s</span></td>
+            <td><a asp-action="Details" asp-route-id="@v.Id">Open</a></td>
+        </tr>
+    }
+</table>

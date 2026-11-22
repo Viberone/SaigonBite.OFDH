@@ -1,0 +1,58 @@
+---
+title: Use case diagram with ownership (team F6, AI-assisted). Orange = 523C0007, blue = 523C0001, grey = supporting
+---
+flowchart LR
+    CUS["«actor»<br/>Customer"]
+    LOC["«actor»<br/>Local Customer"] -- "is a" --> CUS
+    TOU["«actor»<br/>Foreign Tourist"] -- "is a" --> CUS
+    KIT["«actor»<br/>Kitchen Staff"]
+    SHP["«actor»<br/>Shipper"]
+    OFF["«actor»<br/>Office Staff"]
+    ADM["«actor»<br/>Admin"]
+    MGR["«actor»<br/>Manager"]
+    PAY["«system»<br/>Payment Gateway"]
+    MAP["«system»<br/>Map Service"]
+    subgraph SYS["SaigonBite OFDH Platform"]
+        direction TB
+        UC01(["UC01 Register customer<br/>and manage addresses"])
+        UC02(["UC02 Browse hubs,<br/>brands and menus"])
+        UC03(["UC03 Place an Order<br/>Owner 523C0007"])
+        UC04(["UC04 Track an order"])
+        UC05(["UC05 Cancel an order"])
+        UC07(["UC07 Confirm or reject<br/>an incoming order"])
+        UC08(["UC08 Prepare an order<br/>and mark it ready"])
+        UC09(["UC09 Manage item<br/>availability at a hub"])
+        UC10(["UC10 Deliver an Order<br/>Owner 523C0001"])
+        UC11(["UC11 Rate an order<br/>and complain"])
+        UC12(["UC12 Handle a complaint<br/>and decide a refund"])
+        UC13(["UC13 Manage hubs, capacity<br/>and staff accounts"])
+        UC14(["UC14 Manage brands<br/>and menu items"])
+        UC15(["UC15 Manage Vouchers<br/>Owner 523C0007"])
+        UC16(["UC16 Produce Management<br/>Reports · Owner 523C0001"])
+    end
+    CUS --- UC01
+    CUS --- UC02
+    CUS --- UC03
+    CUS --- UC04
+    CUS --- UC05
+    CUS --- UC11
+    KIT --- UC07
+    KIT --- UC08
+    KIT --- UC09
+    SHP --- UC10
+    OFF --- UC12
+    ADM --- UC13
+    ADM --- UC14
+    ADM --- UC15
+    MGR --- UC16
+    UC03 --- PAY
+    UC03 --- MAP
+    UC10 --- PAY
+    classDef duc fill:#FDEBDD,stroke:#C2410C,stroke-width:2px,color:#1F2937
+    classDef minh fill:#DCE8F7,stroke:#1D5FA8,stroke-width:2px,color:#1F2937
+    classDef sup fill:#F1F3F5,stroke:#9AA6B8,color:#5B6472
+    classDef actor fill:#FFFFFF,stroke:#FFFFFF,color:#0B3D73,font-weight:bold
+    class UC03,UC15 duc
+    class UC10,UC16 minh
+    class UC01,UC02,UC04,UC05,UC07,UC08,UC09,UC11,UC12,UC13,UC14 sup
+    class CUS,LOC,TOU,KIT,SHP,OFF,ADM,MGR,PAY,MAP actor

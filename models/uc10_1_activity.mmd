@@ -1,0 +1,45 @@
+---
+title: UC10 Deliver an Order, activity diagram (author 523C0001, AI-assisted)
+---
+flowchart TB
+    subgraph SH["Shipper"]
+        direction TB
+        S((" ")) --> A1["Open the list of<br/>ready orders at my hub"]
+        A2["Take an order"]
+        A3["Collect the food at the counter,<br/>confirm the pick-up"]
+        A4["Travel to the address"]
+        A5{"Customer<br/>reached?"}
+        A6{"Cash on<br/>delivery?"}
+        A7["Hand over the food,<br/>collect the cash, enter the amount"]
+        A8["Hand over the food"]
+        A9["Report the failure<br/>with a reason"]
+        E((("●")))
+    end
+    subgraph SY["System"]
+        direction TB
+        B1["Show ready orders of the<br/>shipper's hub not yet taken"]
+        B2{"Still free and<br/>same hub?"}
+        B3["Create Delivery (Assigned)"]
+        B4["Show 'taken by another<br/>shipper'"]
+        B5["Delivery PickedUp,<br/>Order OutForDelivery"]
+        B6{"Cash equals<br/>order total?"}
+        B7["Show the amount to collect"]
+        B8["Delivery Delivered, Order Delivered,<br/>cash recorded, Payment Collected"]
+        B9["Delivery Delivered, Order Delivered,<br/>Payment Captured at the gateway"]
+        B10["Delivery Failed, Order DeliveryFailed,<br/>Payment Voided, office notified"]
+    end
+    A1 --> B1 --> A2 --> B2
+    B2 -- no --> B4 --> A1
+    B2 -- yes --> B3 --> A3 --> B5 --> A4 --> A5
+    A5 -- no --> A9 --> B10 --> E
+    A5 -- yes --> A6
+    A6 -- yes --> A7 --> B6
+    B6 -- no --> B7 --> A7
+    B6 -- yes --> B8 --> E
+    A6 -- "no (paid online)" --> A8 --> B9 --> E
+    classDef shp fill:#DCE8F7,stroke:#1D5FA8
+    classDef sys fill:#E6EEF8,stroke:#0B3D73
+    classDef fail fill:#FBE9E7,stroke:#B91C1C,color:#B91C1C
+    class A1,A2,A3,A4,A7,A8 shp
+    class B1,B3,B4,B5,B7,B8,B9 sys
+    class A9,B10 fail

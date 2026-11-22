@@ -1,0 +1,17 @@
+@model List<Order>
+@{ ViewData["Title"] = "My orders"; }
+<h1>My orders</h1>
+<table class="table bg-white">
+    <thead><tr><th>#</th><th>Placed</th><th>Hub</th><th class="text-end">Total</th><th>Status</th><th></th></tr></thead>
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@o.PlacedAt.ToString("dd/MM HH:mm")</td>
+            <td>@o.HubName</td>
+            <td class="text-end">@Vnd(o.Total)</td>
+            <td><span class="badge @StatusClass(o.Status)">@o.Status</span></td>
+            <td><a asp-action="Details" asp-route-id="@o.Id">Track</a></td>
+        </tr>
+    }
+</table>

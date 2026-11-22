@@ -1,0 +1,22 @@
+---
+title: SaigonBite business process overview, order to refund (author 523C0007, AI-assisted)
+---
+flowchart LR
+    A(["Customer chooses<br/>hub and items"]) --> B{"Hub busy<br/>or too far?"}
+    B -- yes --> A2["Platform suggests<br/>a quieter hub"] --> A
+    B -- no --> C["Platform shows<br/>full price"] --> D["Customer confirms,<br/>pays online or COD"]
+    D --> E["Order Placed,<br/>hub notified"]
+    E --> F{"Kitchen: items<br/>available?"}
+    F -- no --> F2["Order Rejected,<br/>payment voided"]
+    F -- yes --> G["Kitchen confirms,<br/>cooks, marks ready"]
+    G --> H["Shipper picks up"]
+    H --> I{"Customer<br/>reached?"}
+    I -- no --> I2["Delivery failed,<br/>office notified"]
+    I -- yes --> J["Delivered; cash<br/>collected or card captured"]
+    J --> K["Customer rates<br/>food and delivery"]
+    K --> L{"Wrong or<br/>late?"}
+    L -- yes --> M["Office staff decide<br/>the refund"]
+    L -- no --> N(["Done"])
+    J -. "order data" .-> R["Manager reads sales,<br/>workload, delivery reports"]
+    classDef fail fill:#FBE9E7,stroke:#B91C1C,color:#B91C1C
+    class F2,I2 fail

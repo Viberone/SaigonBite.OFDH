@@ -1,0 +1,15 @@
+---
+title: Delivery state machine (author 523C0001, AI-assisted)
+---
+stateDiagram-v2
+    direction LR
+    [*] --> Assigned : acceptOrder() [order ReadyForPickup, same hub, not taken]
+    Assigned --> PickedUp : pickUp() / order.PickUp() (order OutForDelivery)
+    PickedUp --> Delivered : confirmDelivered(cash) [cash = total if COD] / order.Deliver(), payment.Settle()
+    PickedUp --> Failed : reportFailure(reason) [reason given] / order.FailDelivery(), payment.Void()
+    Delivered --> [*]
+    Failed --> [*]
+    note right of PickedUp
+        The shipper is responsible for the
+        order and its cash from here
+    end note

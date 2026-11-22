@@ -1,0 +1,49 @@
+---
+title: Package diagram of the SaigonBite.Web subsystem (team F6, AI-assisted)
+---
+flowchart TB
+    subgraph VIEW["View layer · Views/ (Razor)"]
+        direction LR
+        V1["Order/*"]:::duc
+        V2["Voucher/*"]:::duc
+        V3["Delivery/*"]:::minh
+        V4["Report/*"]:::minh
+        V5["Menu, Kitchen, Home, Shared"]
+    end
+    subgraph CTRL["Controller layer · Controllers/"]
+        direction LR
+        C1["OrderController"]:::duc
+        C2["VoucherController"]:::duc
+        C3["DeliveryController"]:::minh
+        C4["ReportController"]:::minh
+        C5["Menu, Kitchen, Home controllers<br/>ViewModels"]
+    end
+    subgraph DOM["Domain layer · Domain/"]
+        direction LR
+        D1["Order, OrderLine, PriceCalculator,<br/>PriceQuote, Voucher"]:::duc
+        D2["Delivery, Payment,<br/>ManagementReport rows"]:::minh
+        D3["Customer, Hub, MenuItem, Staff,<br/>BusinessRules, enums"]
+    end
+    subgraph DA["Data access layer · DataAccess/"]
+        direction LR
+        A1["OrderDAO, VoucherDAO"]:::duc
+        A2["DeliveryDAO, ReportDAO"]:::minh
+        A3["Db, HubDAO, MenuItemDAO,<br/>CustomerDAO, StaffDAO, RuleDAO"]
+    end
+    subgraph INT["Integration · Integration/"]
+        I1["IMapService → MockMapService<br/>IPaymentGateway → MockPaymentGateway"]
+    end
+    subgraph INF["Infrastructure · Infrastructure/"]
+        F1["ICurrentUser, RoleAttribute,<br/>IClock, Fmt"]
+    end
+    DB[("SQLite database<br/>Database/schema.sql, seed.sql")]
+    VIEW --> CTRL
+    CTRL --> DOM
+    CTRL --> DA
+    CTRL --> INT
+    CTRL --> INF
+    DA --> DOM
+    DA --> DB
+    INT --> DA
+    classDef duc fill:#FDEBDD,stroke:#C2410C
+    classDef minh fill:#DCE8F7,stroke:#1D5FA8

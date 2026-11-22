@@ -1,0 +1,22 @@
+---
+title: UC03 SSD · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor C as :Customer
+    participant S as :System
+    C->>S: selectHub(hubId)
+    alt hub load ≥ 100%
+        S-->>C: hub busy, list of quieter hubs (name, load, distance)
+    else
+        S-->>C: menu (item, price, available), hub load label
+    end
+    loop until the price is accepted
+        C->>S: enterOrderDetails(items[itemId, quantity], addressId, voucherCode, paymentMethod)
+        alt details invalid
+            S-->>C: error messages
+        else
+            S-->>C: full price (foodSubtotal, deliveryFee, quietDiscount, voucherDiscount, surcharge, total)
+        end
+    end
+    C->>S: confirmOrder()
+    S-->>C: receipt (orderId, status = Placed, total, payment status)

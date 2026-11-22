@@ -1,0 +1,49 @@
+---
+title: UC15 Manage Vouchers, activity diagram (author 523C0007, AI-assisted)
+---
+flowchart TB
+    subgraph AD["Admin"]
+        direction TB
+        S((" ")) --> A1["Open the voucher list<br/>(optionally filter by status)"]
+        A2{"Choose an action"}
+        A3["Enter code, description, type, value,<br/>max discount, minimum order, dates, limit"]
+        A4["Change description,<br/>end date or usage limit<br/>(all fields while Draft)"]
+        A9{"More work?"}
+        E((("●")))
+    end
+    subgraph SY["System"]
+        direction TB
+        B1["Show vouchers with derived status<br/>(Draft, Active, Expired, Deactivated)"]
+        B2{"Data valid and<br/>code unique?"}
+        B3["Show the errors"]
+        B4["Save the voucher as Draft"]
+        B5{"Voucher is Draft and<br/>end date not passed?"}
+        B6["Set status Active"]
+        B7{"Voucher is Active<br/>or Expired?"}
+        B8["Set status Deactivated"]
+        B9{"Draft and never used?"}
+        B10["Delete the voucher"]
+        B11["Refuse with the reason<br/>(e.g. deactivate instead)"]
+        B12["Save the changes"]
+    end
+    A1 --> B1 --> A2
+    A2 -- create --> A3 --> B2
+    A2 -- edit --> A4 --> B2
+    B2 -- no --> B3 --> A2
+    B2 -- "yes, new" --> B4 --> A9
+    B2 -- "yes, edit" --> B12 --> A9
+    A2 -- activate --> B5
+    B5 -- yes --> B6 --> A9
+    B5 -- no --> B11
+    A2 -- deactivate --> B7
+    B7 -- yes --> B8 --> A9
+    B7 -- no --> B11
+    A2 -- delete --> B9
+    B9 -- yes --> B10 --> A9
+    B9 -- no --> B11 --> A9
+    A9 -- yes --> A1
+    A9 -- no --> E
+    classDef adm fill:#FDEBDD,stroke:#C2410C
+    classDef sys fill:#E6EEF8,stroke:#0B3D73
+    class A1,A3,A4 adm
+    class B1,B3,B4,B6,B8,B10,B11,B12 sys

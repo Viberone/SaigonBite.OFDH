@@ -1,0 +1,18 @@
+@model PriceQuote
+<table class="table price-table mb-0">
+    <tr><td>Food subtotal</td><td>@Vnd(Model.FoodSubtotal)</td></tr>
+    <tr><td>Delivery fee (@Model.DistanceKm.ToString("0.0") km, billed @Model.BilledKm km)</td><td>@Vnd(Model.DeliveryFee)</td></tr>
+    @if (Model.QuietDiscount > 0)
+    {
+        <tr class="text-success"><td>Quiet-kitchen discount</td><td>−@Vnd(Model.QuietDiscount)</td></tr>
+    }
+    @if (Model.VoucherDiscount > 0)
+    {
+        <tr class="text-success"><td>Voucher @Model.VoucherCode</td><td>−@Vnd(Model.VoucherDiscount)</td></tr>
+    }
+    @if (Model.Surcharge > 0)
+    {
+        <tr class="text-danger"><td>Rain surcharge</td><td>@Vnd(Model.Surcharge)</td></tr>
+    }
+    <tr class="price-total"><td>Total</td><td>@Vnd(Model.Total)</td></tr>
+</table>

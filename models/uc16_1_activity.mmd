@@ -1,0 +1,33 @@
+---
+title: UC16 Produce Management Reports, activity diagram (author 523C0001, AI-assisted)
+---
+flowchart TB
+    subgraph MG["Manager"]
+        direction TB
+        S((" ")) --> A1["Open the reports page"]
+        A2["Choose a period<br/>and optionally one hub"]
+        A3["Read sales, hub workload,<br/>delivery performance, best sellers"]
+        A4{"Another view?"}
+        E((("●")))
+    end
+    subgraph SY["System"]
+        direction TB
+        B0["Show the last 14 days<br/>for all hubs by default"]
+        B1{"Start ≤ end and<br/>period ≤ 3 months?"}
+        B2["Correct the period<br/>and show a message"]
+        B3["Sales: delivered orders, food sales,<br/>fees, discounts, surcharges, revenue"]
+        B4["Workload: orders placed, peak share,<br/>busiest day, rejected, cancelled"]
+        B5["Delivery: order-to-door time,<br/>share within 40 min, failures, pickup wait"]
+        B6["Top 5 items by quantity"]
+        B7["Display the report"]
+    end
+    A1 --> B0 --> A3
+    A2 --> B1
+    B1 -- no --> B2 --> B3
+    B1 -- yes --> B3 --> B4 --> B5 --> B6 --> B7 --> A3 --> A4
+    A4 -- yes --> A2
+    A4 -- no --> E
+    classDef mgr fill:#DCE8F7,stroke:#1D5FA8
+    classDef sys fill:#E6EEF8,stroke:#0B3D73
+    class A1,A2,A3 mgr
+    class B0,B2,B3,B4,B5,B6,B7 sys

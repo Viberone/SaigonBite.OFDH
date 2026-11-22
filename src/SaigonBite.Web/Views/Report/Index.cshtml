@@ -1,0 +1,76 @@
+@model ReportVM
+@{
+    ViewData["Title"] = "Management reports";
+    var r = Model.Report;
+    var total = r.SalesTotal;
+    string Pct(double v) => (v * 100).ToString("0") + "%";
+}
+<h1>Management reports</h1>
+<p class="text-muted"><span class="uc-tag">UC16 Produce Management Reports · 523C0001</span></p>
+<form method="get" class="card p-3 mb-4 d-flex flex-row flex-wrap gap-3 align-items-end">
+    <div><label class="form-label" for="from">From</label><input class="form-control" type="date" id="from" name="from" value="@r.From.ToString("yyyy-MM-dd")" /></div>
+    <div><label class="form-label" for="to">To</label><input class="form-control" type="date" id="to" name="to" value="@r.To.ToString("yyyy-MM-dd")" /></div>
+    <div>
+        <label class="form-label" for="hubId">Hub</label>
+        <select class="form-select" id="hubId" name="hubId">
+            <option value="">All hubs</option>
+            @foreach (var h in Model.Hubs) { <option value="@h.Id" selected="@(h.Id == r.HubId)">@h.Name</option> }
+        </select>
+    </div>
+    <button class="btn btn-primary">Show reports</button>
+</form>
+@foreach (var e in Model.Errors) { <div class="alert alert-warning">@e</div> }
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="card p-3"><div class="small text-muted">Revenue</div><div class="fs-4 fw-bold">@Vnd(total.Revenue)</div></div></div>
+    <div class="col-md-3"><div class="card p-3"><div class="small text-muted">Delivered orders</div><div class="fs-4 fw-bold">@total.DeliveredOrders</div></div></div>
+    <div class="col-md-3"><div class="card p-3"><div class="small text-muted">Average order</div><div class="fs-4 fw-bold">@Vnd(total.AverageOrder)</div></div></div>
+    <div class="col-md-3"><div class="card p-3"><div class="small text-muted">Delivered within 40 min</div><div class="fs-4 fw-bold">@Pct(r.Delivery.Sum(d => d.Delivered) == 0 ? 0 : (double)r.Delivery.Sum(d => d.WithinTarget) / r.Delivery.Sum(d => d.Delivered))</div></div></div>
+</div>
+
+<h2 class="h4">1. Sales</h2>
+<table class="table bg-white">
+    <thead><tr><th>Hub</th><th class="text-end">Delivered</th><th class="text-end">Food sales</th><th class="text-end">Delivery fees</th><th class="text-end">Discounts</th><th class="text-end">Surcharges</th><th class="text-end">Revenue</th><th class="text-end">Avg order</th></tr></thead>
+    @foreach (var s in r.Sales.Append(total))
+    {
+        <tr class="@(s == total ? "fw-bold" : "")">
+            <td>@s.HubName</td><td class="text-end">@s.DeliveredOrders</td><td class="text-end">@Vnd(s.FoodSales)</td><td class="text-end">@Vnd(s.DeliveryFees)</td>
+            <td class="text-end">−@Vnd(s.Discounts)</td><td class="text-end">@Vnd(s.Surcharges)</td><td class="text-end">@Vnd(s.Revenue)</td><td class="text-end">@Vnd(s.AverageOrder)</td>
+        </tr>
+    }
+</table>
+
+<h2 class="h4">2. Hub workload</h2>
+<table class="table bg-white">
+    <thead><tr><th>Hub</th><th class="text-end">Capacity</th><th class="text-end">Orders placed</th><th class="text-end">At peak hours</th><th class="text-end">Busiest day</th><th class="text-end">Rejected</th><th class="text-end">Cancelled</th></tr></thead>
+    @foreach (var w in r.Workload)
+    {
+        <tr>
+            <td>@w.HubName</td><td class="text-end">@w.Capacity</td><td class="text-end">@w.OrdersPlaced</td>
+            <td class="text-end">@w.PeakOrders (@Pct(w.PeakShare))</td><td class="text-end">@w.BusiestDayOrders</td>
+            <td class="text-end">@w.Rejected (@Pct(w.RejectRate))</td><td class="text-end">@w.Cancelled</td>
+        </tr>
+    }
+</table>
+
+<h2 class="h4">3. Delivery performance</h2>
+<table class="table bg-white">
+    <thead><tr><th>Hub</th><th class="text-end">Delivered</th><th class="text-end">Failed</th><th class="text-end">Avg order-to-door</th><th class="text-end">Within 40 min</th><th class="text-end">Avg wait for shipper</th></tr></thead>
+    @foreach (var d in r.Delivery)
+    {
+        <tr>
+            <td>@d.HubName</td><td class="text-end">@d.Delivered</td><td class="text-end">@d.Failed (@Pct(d.FailRate))</td>
+            <td class="text-end">@d.AvgMinutesToDoor.ToString("0.0") min</td><td class="text-end">@d.WithinTarget (@Pct(d.OnTimeRate))</td>
+            <td class="text-end">@d.AvgPickupWait.ToString("0.0") min</td>
+        </tr>
+    }
+</table>
+
+<h2 class="h4">Best-selling items</h2>
+<table class="table bg-white" style="max-width:40rem">
+    <thead><tr><th>Item</th><th>Brand</th><th class="text-end">Quantity</th><th class="text-end">Sales</th></tr></thead>
+    @foreach (var t in r.TopItems)
+    {
+        <tr><td>@t.ItemName</td><td>@t.BrandName</td><td class="text-end">@t.Quantity</td><td class="text-end">@Vnd(t.Sales)</td></tr>
+    }
+</table>

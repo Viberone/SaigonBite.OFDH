@@ -1,0 +1,38 @@
+---
+title: UC10 Sequence diagram · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor SH as :Shipper
+    participant DC as :DeliveryController
+    participant O as :Order
+    participant D as :Delivery
+    participant P as :Payment
+    participant G as :IPaymentGateway
+    SH->>DC: Accept(orderId)
+    DC->>D: Delivery.Assign(order, shipper, now)
+    Note right of D: guards: shipper of the order's hub, order ReadyForPickup
+    D-->>DC: delivery (Assigned)
+    SH->>DC: PickUp(deliveryId)
+    DC->>D: PickUp(now)
+    DC->>O: PickUp()
+    Note right of O: ReadyForPickup → OutForDelivery
+    alt customer reached
+        SH->>DC: Complete(deliveryId, cashCollected)
+        DC->>D: Complete(method, total, cashCollected, now)
+        Note right of D: COD: cashCollected must equal total
+        DC->>O: Deliver(now)
+        opt paid online
+            DC->>G: Capture(gatewayRef)
+        end
+        DC->>P: Settle()
+        Note right of P: COD → Collected, online → Captured
+    else customer not reached
+        SH->>DC: Fail(deliveryId, reason)
+        DC->>D: Fail(reason, now)
+        DC->>O: FailDelivery(reason, now)
+        opt paid online
+            DC->>G: Void(gatewayRef)
+        end
+        DC->>P: Void()
+    end
+    DC-->>SH: shipper board with message

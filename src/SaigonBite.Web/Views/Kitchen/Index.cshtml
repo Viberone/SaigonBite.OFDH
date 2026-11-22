@@ -1,0 +1,74 @@
+@model KitchenBoardVM
+@{ ViewData["Title"] = "Kitchen board"; }
+<div class="d-flex justify-content-between align-items-start">
+    <div>
+        <h1>@Model.Hub.Name</h1>
+        <p class="text-muted">Load @Model.Hub.ActiveOrders / @Model.Hub.Capacity · <span class="badge load-@Model.Hub.LoadLabel(Model.Rules)">@Model.Hub.LoadLabel(Model.Rules)</span>
+            <span class="uc-tag">Supporting UC07 Confirm or reject · UC08 Prepare and mark ready · UC09 Availability</span></p>
+    </div>
+    <form method="post" asp-action="Rain">
+        <input type="hidden" name="on" value="@((!Model.Hub.RainSurchargeOn).ToString())" />
+        <button class="btn btn-sm btn-outline-primary">@(Model.Hub.RainSurchargeOn ? "Rain surcharge: ON" : "Rain surcharge: off")</button>
+    </form>
+</div>
+<div class="row g-3">
+    <div class="col-lg-4">
+        <h2 class="h5">Incoming (@Model.Incoming.Count)</h2>
+        @foreach (var o in Model.Incoming)
+        {
+            <div class="card p-3 mb-2">
+                <div class="d-flex justify-content-between"><b>#@o.Id</b><span class="small">@o.PlacedAt.ToString("HH:mm")</span></div>
+                <ul class="small mb-2">@foreach (var l in o.Lines) { <li>@l.Quantity × @l.ItemName</li> }</ul>
+                <div class="small mb-2">@o.CustomerName · @o.DeliveryDistrict · @Vnd(o.Total)</div>
+                <div class="d-flex gap-2">
+                    <form method="post" asp-action="Confirm" asp-route-id="@o.Id"><button class="btn btn-sm btn-primary">Confirm</button></form>
+                    <form method="post" asp-action="Reject" asp-route-id="@o.Id" class="d-flex gap-1">
+                        <input name="reason" class="form-control form-control-sm" placeholder="Reason" value="Item ran out" />
+                        <button class="btn btn-sm btn-outline-danger">Reject</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-4">
+        <h2 class="h5">In the kitchen (@Model.Cooking.Count)</h2>
+        @foreach (var o in Model.Cooking)
+        {
+            <div class="card p-3 mb-2">
+                <div class="d-flex justify-content-between"><b>#@o.Id</b><span class="badge @StatusClass(o.Status)">@o.Status</span></div>
+                <div class="small mb-2">@o.CustomerName · @Vnd(o.Total)</div>
+                @if (o.Status == OrderStatus.Confirmed)
+                {
+                    <form method="post" asp-action="Start" asp-route-id="@o.Id"><button class="btn btn-sm btn-primary">Start preparing</button></form>
+                }
+                else
+                {
+                    <form method="post" asp-action="Ready" asp-route-id="@o.Id"><button class="btn btn-sm btn-accent">Mark ready</button></form>
+                }
+            </div>
+        }
+        <h2 class="h5 mt-4">Waiting for a shipper (@Model.Ready.Count)</h2>
+        @foreach (var o in Model.Ready)
+        {
+            <div class="card p-2 mb-2 small"><b>#@o.Id</b> ready since @o.ReadyAt?.ToString("HH:mm")</div>
+        }
+    </div>
+    <div class="col-lg-4">
+        <h2 class="h5">Item availability</h2>
+        <table class="table table-sm bg-white">
+            @foreach (var m in Model.Menu)
+            {
+                <tr>
+                    <td>@m.NameEn<br /><span class="small text-muted">@m.BrandName</span></td>
+                    <td class="text-end">
+                        <form method="post" asp-action="Availability">
+                            <input type="hidden" name="itemId" value="@m.Id" />
+                            <input type="hidden" name="available" value="@((!m.IsAvailable).ToString())" />
+                            <button class="btn btn-sm @(m.IsAvailable ? "btn-outline-success" : "btn-outline-secondary")">@(m.IsAvailable ? "Available" : "Sold out")</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

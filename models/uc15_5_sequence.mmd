@@ -1,0 +1,39 @@
+---
+title: UC15 Sequence diagram · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor A as :Admin
+    participant VC as :VoucherController
+    participant V as :Voucher
+    participant D as :VoucherDAO
+    A->>VC: Create(form)
+    VC->>V: Validate()
+    V-->>VC: errors
+    VC->>D: CodeExists(code)
+    alt errors found
+        VC-->>A: Edit view with errors
+    else
+        VC->>D: Insert(voucher as Draft)
+        D-->>VC: voucherId
+        VC-->>A: Details view
+    end
+    A->>VC: Activate(voucherId)
+    VC->>D: GetById(voucherId)
+    D-->>VC: voucher
+    VC->>V: Activate(today)
+    Note right of V: guard: StoredStatus = Draft and EndDate ≥ today
+    VC->>D: Update(voucher)
+    VC-->>A: Details view (Active)
+    A->>VC: Deactivate(voucherId)
+    VC->>D: GetById(voucherId)
+    VC->>V: Deactivate(today)
+    VC->>D: Update(voucher)
+    A->>VC: Delete(voucherId)
+    VC->>D: GetById(voucherId)
+    VC->>V: CanDelete
+    alt Draft and never used
+        VC->>D: Delete(voucherId)
+        VC-->>A: list view
+    else
+        VC-->>A: "deactivate it instead"
+    end

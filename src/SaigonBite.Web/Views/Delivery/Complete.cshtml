@@ -1,0 +1,29 @@
+@model DeliveryCard
+@{
+    ViewData["Title"] = "Confirm delivery";
+    var o = Model.Order;
+}
+<h1>Confirm delivery of order #@o.Id</h1>
+<p class="text-muted"><span class="uc-tag">UC10 Deliver an Order · 523C0001</span></p>
+@if (ViewBag.Error is string err)
+{
+    <div class="alert alert-danger">@err</div>
+}
+<div class="card p-3" style="max-width:32rem">
+    <div><b>@o.CustomerName</b> · @o.DeliveryStreet, @o.DeliveryDistrict</div>
+    <ul class="small my-2">@foreach (var l in o.Lines) { <li>@l.Quantity × @l.ItemName</li> }</ul>
+    <form method="post" asp-action="Complete" asp-route-id="@Model.Delivery.Id">
+        @if (o.PaymentMethod == PaymentMethod.COD)
+        {
+            <label class="form-label fw-bold" for="cash">Cash collected (VND)</label>
+            <input id="cash" name="cashCollected" type="number" class="form-control mb-2" value="@o.Total" />
+            <div class="small text-muted mb-3">The order total is <b>@Vnd(o.Total)</b>. Enter the exact amount you received.</div>
+        }
+        else
+        {
+            <p>Paid online by @o.PaymentMethod: nothing to collect.</p>
+        }
+        <button class="btn btn-accent">Confirm delivered</button>
+        <a class="btn btn-link" asp-action="Index">Back</a>
+    </form>
+</div>

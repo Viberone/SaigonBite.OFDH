@@ -1,0 +1,60 @@
+@model VoucherEditVM
+@{
+    var v = Model.Voucher;
+    bool terms = Model.IsNew || v.CanEditTerms;
+    ViewData["Title"] = Model.IsNew ? "New voucher" : "Edit " + v.Code;
+}
+<h1>@(Model.IsNew ? "New voucher" : "Edit voucher " + v.Code)</h1>
+<p class="text-muted">@(terms ? "A new voucher is saved as Draft; activate it when it should go live." : "This voucher is Active: its terms are fixed, so only the description, end date and usage limit can change.")
+    <span class="uc-tag">UC15 Manage Vouchers · 523C0007</span></p>
+@if (Model.Errors.Count > 0)
+{
+    <div class="alert alert-danger"><ul class="mb-0">@foreach (var e in Model.Errors) { <li>@e</li> }</ul></div>
+}
+<form method="post" asp-action="@(Model.IsNew ? "Create" : "Edit")" asp-route-id="@(Model.IsNew ? null : v.Id)" class="card p-3" style="max-width:40rem">
+    <div class="row g-3">
+        <div class="col-sm-5">
+            <label class="form-label" for="Code">Code</label>
+            <input class="form-control" id="Code" name="Code" value="@v.Code" readonly="@(!terms)" placeholder="e.g. SUMMER10" />
+        </div>
+        <div class="col-sm-7">
+            <label class="form-label" for="Description">Description</label>
+            <input class="form-control" id="Description" name="Description" value="@v.Description" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="DiscountType">Type</label>
+            <select class="form-select" id="DiscountType" name="DiscountType" disabled="@(!terms)">
+                <option value="Percent" selected="@(v.DiscountType == DiscountType.Percent)">Percent</option>
+                <option value="Fixed" selected="@(v.DiscountType == DiscountType.Fixed)">Fixed amount</option>
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="DiscountValue">Value (% or VND)</label>
+            <input class="form-control" type="number" id="DiscountValue" name="DiscountValue" value="@v.DiscountValue" readonly="@(!terms)" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="MaxDiscount">Max discount (VND)</label>
+            <input class="form-control" type="number" id="MaxDiscount" name="MaxDiscount" value="@v.MaxDiscount" readonly="@(!terms)" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="MinOrderValue">Min. food subtotal</label>
+            <input class="form-control" type="number" id="MinOrderValue" name="MinOrderValue" value="@v.MinOrderValue" readonly="@(!terms)" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="StartDate">Start date</label>
+            <input class="form-control" type="date" id="StartDate" name="StartDate" value="@v.StartDate.ToString("yyyy-MM-dd")" readonly="@(!terms)" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="EndDate">End date</label>
+            <input class="form-control" type="date" id="EndDate" name="EndDate" value="@v.EndDate.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label" for="UsageLimit">Usage limit</label>
+            <input class="form-control" type="number" id="UsageLimit" name="UsageLimit" value="@v.UsageLimit" />
+        </div>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-accent">Save</button>
+        <a class="btn btn-link" asp-action="@(Model.IsNew ? "Index" : "Details")" asp-route-id="@(Model.IsNew ? null : v.Id)">Cancel</a>
+    </div>
+</form>

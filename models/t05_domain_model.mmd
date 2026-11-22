@@ -1,0 +1,134 @@
+---
+title: Domain model class diagram (team F6; Order and Voucher 523C0007, Delivery 523C0001; AI-assisted)
+---
+classDiagram
+    direction LR
+    class Customer {
+        <<abstract>>
+        customerId
+        fullName
+        email
+        createdAt
+    }
+    class LocalCustomer {
+        phone
+    }
+    class ForeignTourist {
+        passportNo
+        nationality
+    }
+    class Address {
+        label
+        street
+        district
+        isHotel
+    }
+    class Hub {
+        hubId
+        name
+        district
+        capacity
+        rainSurchargeOn
+        /load
+    }
+    class Brand {
+        name
+        cuisine
+    }
+    class MenuItem {
+        nameVi
+        nameEn
+        price
+    }
+    class HubMenuItem {
+        <<association class>>
+        isAvailable
+    }
+    class Order {
+        orderId
+        status
+        paymentMethod
+        foodSubtotal
+        deliveryFee
+        quietDiscount
+        voucherDiscount
+        surcharge
+        total
+        placedAt
+        closedAt
+    }
+    class OrderLine {
+        lineNo
+        quantity
+        unitPrice
+    }
+    class Voucher {
+        code
+        discountType
+        discountValue
+        maxDiscount
+        minOrderValue
+        startDate
+        endDate
+        usageLimit
+        usedCount
+        status
+    }
+    class Payment {
+        method
+        amount
+        status
+        gatewayRef
+    }
+    class Delivery {
+        status
+        assignedAt
+        pickedUpAt
+        finishedAt
+        cashCollected
+        failureReason
+    }
+    class Staff {
+        <<abstract>>
+        staffId
+        fullName
+        phone
+    }
+    class KitchenStaff
+    class Shipper
+    class OfficeStaff
+    class Admin
+    class Manager
+    class Complaint {
+        description
+        status
+        refundAmount
+    }
+    class BusinessRule {
+        ruleKey
+        ruleValue
+    }
+    Customer <|-- LocalCustomer
+    Customer <|-- ForeignTourist
+    Staff <|-- KitchenStaff
+    Staff <|-- Shipper
+    Staff <|-- OfficeStaff
+    Staff <|-- Admin
+    Staff <|-- Manager
+    Customer "1" -- "1..*" Address : delivers to
+    Customer "1" -- "0..*" Order : places
+    Hub "1" -- "0..*" Order : cooks
+    Order "1" *-- "1..*" OrderLine : contains
+    OrderLine "0..*" --> "1" MenuItem : of
+    Brand "1" -- "1..*" MenuItem : offers
+    Hub "1" -- "0..*" HubMenuItem
+    MenuItem "1" -- "0..*" HubMenuItem
+    Order "0..*" -- "0..1" Voucher : uses
+    Order "1" -- "1" Payment : paid by
+    Order "1" -- "0..1" Delivery : delivered by
+    Shipper "1" -- "0..*" Delivery : makes
+    Hub "1" -- "0..*" KitchenStaff : employs
+    Hub "1" -- "0..*" Shipper : employs
+    Order "1" -- "0..*" Complaint : about
+    OfficeStaff "0..1" -- "0..*" Complaint : decides
+    Admin "1" -- "0..*" Voucher : creates

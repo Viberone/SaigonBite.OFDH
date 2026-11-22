@@ -1,0 +1,37 @@
+---
+title: UC10 Sequence diagram, data access · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor SH as :Shipper
+    participant BV as :ShipperBoardView
+    participant DC as :DeliveryController
+    participant OD as :OrderDAO
+    participant DD as :DeliveryDAO
+    participant D as :Delivery
+    participant O as :Order
+    participant DB as SQLite
+    SH->>BV: click "Take it"
+    BV->>DC: POST Accept(orderId)
+    DC->>OD: GetById(orderId)
+    OD->>DB: SELECT order + lines
+    DC->>D: Delivery.Assign(order, shipper, now)
+    DC->>DD: TryInsert(delivery)
+    DD->>DB: INSERT INTO delivery (order_id UNIQUE, status = 'Assigned')
+    alt UNIQUE constraint fails
+        DD-->>DC: false
+        DC-->>BV: "taken by another shipper"
+    else
+        DD-->>DC: true
+        DC-->>BV: board with the new delivery
+    end
+    SH->>DC: POST Complete(deliveryId, cashCollected)
+    DC->>DD: GetById(deliveryId)
+    DD->>DB: SELECT * FROM delivery WHERE delivery_id = ?
+    DC->>OD: GetById(orderId)
+    DC->>D: Complete(method, total, cash, now)
+    DC->>O: Deliver(now)
+    DC->>OD: GetPayment(orderId)
+    OD->>DB: SELECT * FROM payment WHERE order_id = ?
+    DC->>DD: SaveProgress(delivery, order, payment, now)
+    DD->>DB: BEGIN, UPDATE delivery, UPDATE orders, UPDATE payment, COMMIT
+    DC-->>BV: board, "cash recorded"

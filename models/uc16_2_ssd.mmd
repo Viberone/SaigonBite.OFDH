@@ -1,0 +1,16 @@
+---
+title: UC16 SSD · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor M as :Manager
+    participant S as :System
+    M->>S: openReports()
+    S-->>M: reports for the last 14 days, all hubs
+    loop for each view the manager needs
+        M->>S: requestReports(fromDate, toDate, hubId)
+        alt period invalid
+            S-->>M: message, reports for the corrected period
+        else
+            S-->>M: sales report, hub workload report, delivery performance report, top items
+        end
+    end

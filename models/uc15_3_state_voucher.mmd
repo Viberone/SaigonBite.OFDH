@@ -1,0 +1,19 @@
+---
+title: Voucher state machine (author 523C0007, AI-assisted)
+---
+stateDiagram-v2
+    direction LR
+    [*] --> Draft : createVoucher() [data valid, code unique]
+    Draft --> Draft : updateVoucher() / any field
+    Draft --> Active : activateVoucher() [end date not passed]
+    Draft --> [*] : deleteVoucher() [never used]
+    Active --> Active : updateVoucher() / description, end date, limit only
+    Active --> Active : used on an order / usedCount + 1
+    Active --> Expired : [today > endDate or usedCount = usageLimit]
+    Active --> Deactivated : deactivateVoucher()
+    Expired --> Deactivated : deactivateVoucher()
+    Deactivated --> [*]
+    note right of Expired
+        Derived state: computed from the
+        dates and usage, not stored
+    end note

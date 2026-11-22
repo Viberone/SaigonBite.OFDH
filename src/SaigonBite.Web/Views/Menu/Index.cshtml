@@ -1,0 +1,31 @@
+@model List<HubChoice>
+@{
+    ViewData["Title"] = "Choose a hub";
+    var rules = (BusinessRules)ViewBag.Rules;
+}
+<h1>Choose a hub</h1>
+<p class="text-muted">Each hub cooks for all our brands. A <b>quiet</b> hub gives @((rules.QuietRate * 100).ToString("0"))% off food (up to @Vnd(rules.QuietMax)); a <b>busy</b> hub cannot take new orders right now. <span class="uc-tag">UC02 Browse hubs, brands and menus</span></p>
+<div class="row g-3">
+@foreach (var c in Model)
+{
+    <div class="col-md-4">
+        <div class="card p-3 h-100">
+            <div class="d-flex justify-content-between">
+                <h2 class="h5 mb-1">@c.Hub.Name</h2>
+                <span class="badge load-@c.LoadLabel align-self-start">@c.LoadLabel</span>
+            </div>
+            <div class="small text-muted mb-2">@c.Hub.Street, @c.Hub.District</div>
+            <div class="small">Kitchen load: @c.Hub.ActiveOrders of @c.Hub.Capacity orders (@((c.Hub.Load * 100).ToString("0"))%)</div>
+            @if (c.DistanceKm is double km)
+            {
+                <div class="small">@km.ToString("0.0") km from your @c.FromAddress@(km > rules.MaxKm ? " · outside the delivery radius" : "")</div>
+            }
+            @if (c.Hub.RainSurchargeOn)
+            {
+                <div class="small text-danger">Rain surcharge @Vnd(rules.RainSurcharge)</div>
+            }
+            <a class="btn @(c.LoadLabel == "Busy" ? "btn-outline-secondary" : "btn-accent") mt-3" asp-controller="Order" asp-action="New" asp-route-hubId="@c.Hub.Id">See menu and order</a>
+        </div>
+    </div>
+}
+</div>

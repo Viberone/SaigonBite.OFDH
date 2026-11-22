@@ -1,0 +1,65 @@
+@inject ICurrentUser CurrentUser
+@{
+    var role = CurrentUser.Role;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] · SaigonBite OFDH</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark sb-nav mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">SaigonBite <span class="fw-light">OFDH</span></a>
+        <ul class="navbar-nav me-auto">
+            @if (role == "Customer")
+            {
+                <li class="nav-item"><a class="nav-link" asp-controller="Menu" asp-action="Index">Order food</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Order" asp-action="Index">My orders</a></li>
+            }
+            else if (role == "Kitchen")
+            {
+                <li class="nav-item"><a class="nav-link" asp-controller="Kitchen" asp-action="Index">Kitchen board</a></li>
+            }
+            else if (role == "Shipper")
+            {
+                <li class="nav-item"><a class="nav-link" asp-controller="Delivery" asp-action="Index">My deliveries</a></li>
+            }
+            else if (role == "Admin")
+            {
+                <li class="nav-item"><a class="nav-link" asp-controller="Voucher" asp-action="Index">Vouchers</a></li>
+            }
+            else if (role == "Manager")
+            {
+                <li class="nav-item"><a class="nav-link" asp-controller="Report" asp-action="Index">Reports</a></li>
+            }
+        </ul>
+        @if (role != null)
+        {
+            <span class="navbar-text me-3 small">@CurrentUser.DisplayName · @role</span>
+            <a class="btn btn-sm btn-outline-light" asp-controller="Home" asp-action="Logout">Switch user</a>
+        }
+    </div>
+</nav>
+<main class="container pb-5">
+    @if (TempData["Message"] is string msg)
+    {
+        <div class="alert alert-success">@msg</div>
+    }
+    @if (TempData["Error"] is string err)
+    {
+        <div class="alert alert-danger">@err</div>
+    }
+    @RenderBody()
+</main>
+<footer class="border-top py-3 small text-muted">
+    <div class="container">SaigonBite Online Food Delivery Hub · Team F6 · RAD Sem01_2627 · demo prototype</div>
+</footer>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

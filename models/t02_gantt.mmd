@@ -1,0 +1,33 @@
+---
+title: Gantt chart, six iterations (team F6, AI-assisted)
+---
+gantt
+    dateFormat YYYY-MM-DD
+    axisFormat %d/%m
+    tickInterval 1week
+    todayMarker off
+    section Iteration 1 Inception
+    Vision, plan, process (both)            :done, i1a, 2026-10-19, 4d
+    Thin slice and Part 1 proposal (both)   :done, i1b, 2026-10-22, 3d
+    Part 1 presentation                     :milestone, done, m1, 2026-10-26, 0d
+    section Iteration 2 Elaboration
+    Client Q&A, approval record (both)      :done, i2a, 2026-10-26, 2d
+    Events, use case and domain model (both):done, i2b, 2026-10-27, 3d
+    UC03 analysis (Duc)                     :done, i2c, 2026-10-28, 4d
+    UC10 analysis (Minh)                    :done, i2d, 2026-10-28, 4d
+    section Iteration 3 Elaboration
+    UC03 design, build, test (Duc)          :done, i3a, 2026-11-02, 6d
+    UC10 design, build, test (Minh)         :done, i3b, 2026-11-02, 6d
+    section Iteration 4 Construction
+    UC15 analysis and design (Duc)          :done, i4a, 2026-11-09, 3d
+    UC16 analysis and design (Minh)         :done, i4b, 2026-11-09, 3d
+    section Iteration 5 Construction
+    UC15 build and test (Duc)               :active, i5a, 2026-11-12, 4d
+    UC16 build and test (Minh)              :active, i5b, 2026-11-12, 4d
+    Integration, CRUD check (both)          :i5c, 2026-11-15, 3d
+    section Iteration 6 Transition
+    System test, deployment (both)          :i6a, 2026-11-18, 4d
+    Part 2 report and GitHub release (both) :i6b, 2026-11-20, 3d
+    Part 2 submission                       :milestone, m2, 2026-11-23, 0d
+    Part 3 video and slides (both)          :i6c, 2026-11-23, 5d
+    Part 3 presentation                     :milestone, m3, 2026-11-28, 0d

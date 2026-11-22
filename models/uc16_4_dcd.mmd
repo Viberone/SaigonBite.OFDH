@@ -1,0 +1,72 @@
+---
+title: UC16 Produce Management Reports, design class diagram, first cut (author 523C0001, AI-assisted)
+---
+classDiagram
+    direction LR
+    namespace View {
+        class ReportView {
+            <<view>>
+            filters, KPI tiles, four tables
+        }
+    }
+    namespace Controller {
+        class ReportController {
+            <<controller>>
+            -IClock clock
+        }
+    }
+    namespace Domain {
+        class ManagementReport {
+            +DateOnly From
+            +DateOnly To
+            +int? HubId
+        }
+        class SalesRow {
+            +string HubName
+            +int DeliveredOrders
+            +long FoodSales
+            +long DeliveryFees
+            +long Discounts
+            +long Surcharges
+            +long Revenue
+        }
+        class WorkloadRow {
+            +string HubName
+            +int Capacity
+            +int OrdersPlaced
+            +int PeakOrders
+            +int Rejected
+            +int Cancelled
+            +int BusiestDayOrders
+        }
+        class DeliveryRow {
+            +string HubName
+            +int Delivered
+            +int Failed
+            +double AvgMinutesToDoor
+            +int WithinTarget
+            +double AvgPickupWait
+        }
+        class TopItemRow {
+            +string ItemName
+            +string BrandName
+            +int Quantity
+            +long Sales
+        }
+    }
+    namespace DataAccess {
+        class ReportDAO {
+            <<data access>>
+        }
+        class HubDAO {
+            <<data access>>
+        }
+    }
+    ReportView ..> ReportController
+    ReportController --> ReportDAO
+    ReportController --> HubDAO
+    ReportDAO ..> ManagementReport : builds
+    ManagementReport "1" *-- "0..*" SalesRow
+    ManagementReport "1" *-- "0..*" WorkloadRow
+    ManagementReport "1" *-- "0..*" DeliveryRow
+    ManagementReport "1" *-- "0..5" TopItemRow

@@ -1,0 +1,41 @@
+---
+title: UC03 Place an Order, activity diagram (author 523C0007, AI-assisted)
+---
+flowchart TB
+    subgraph CU["Customer"]
+        direction TB
+        S((" ")) --> A1["Select a hub"]
+        A3["Choose items, delivery address,<br/>voucher and payment method"]
+        A6{"Confirm the price?"}
+        A9["Read the receipt<br/>and track the order"] --> E((("●")))
+        X((("●")))
+    end
+    subgraph SY["System"]
+        direction TB
+        B1{"Hub busy?<br/>(load ≥ 100%)"}
+        B2["Show quieter hubs<br/>within 8 km"]
+        B3["Show the menu with<br/>item availability"]
+        B4{"Items available, address within 8 km,<br/>payment allowed, voucher valid?"}
+        B5["Show what is wrong"]
+        B6["Calculate the full price: subtotal,<br/>distance fee, quiet discount, voucher, surcharge"]
+        B7{"Online<br/>payment?"}
+        B8["Authorise the payment<br/>at the gateway"]
+        B9{"Hub still has room?<br/>(checked again)"}
+        B10["Save Order (Placed), OrderLines and Payment;<br/>count the voucher use; notify the hub"]
+    end
+    A1 --> B1
+    B1 -- yes --> B2 --> A1
+    B1 -- no --> B3 --> A3 --> B4
+    B4 -- no --> B5 --> A3
+    B4 -- yes --> B6 --> A6
+    A6 -- "no, change" --> A3
+    A6 -- "no, leave" --> X
+    A6 -- yes --> B7
+    B7 -- yes --> B8 --> B9
+    B7 -- "no (cash)" --> B9
+    B9 -- no --> B2
+    B9 -- yes --> B10 --> A9
+    classDef sys fill:#E6EEF8,stroke:#0B3D73
+    classDef cus fill:#FDEBDD,stroke:#C2410C
+    class A1,A3,A9 cus
+    class B2,B3,B5,B6,B8,B10 sys

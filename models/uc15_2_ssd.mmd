@@ -1,0 +1,24 @@
+---
+title: UC15 SSD · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor A as :Admin
+    participant S as :System
+    A->>S: listVouchers(statusFilter)
+    S-->>A: vouchers (code, discount, validity, used/limit, status)
+    alt create
+        A->>S: createVoucher(code, description, type, value, maxDiscount, minOrderValue, startDate, endDate, usageLimit)
+        S-->>A: voucher (status = Draft) or errors
+    else update
+        A->>S: updateVoucher(voucherId, description, endDate, usageLimit, [terms if Draft])
+        S-->>A: updated voucher or errors
+    else activate
+        A->>S: activateVoucher(voucherId)
+        S-->>A: voucher (status = Active) or reason refused
+    else deactivate
+        A->>S: deactivateVoucher(voucherId)
+        S-->>A: voucher (status = Deactivated) or reason refused
+    else delete
+        A->>S: deleteVoucher(voucherId)
+        S-->>A: confirmation or "deactivate instead"
+    end

@@ -1,0 +1,68 @@
+@model OrderPageVM
+@{ ViewData["Title"] = "Order from " + Model.Hub.Name; }
+<h1>@Model.Hub.Name</h1>
+<p class="text-muted">Step 1 of 3 · choose items, address, voucher and payment. <span class="uc-tag">UC03 Place an Order · 523C0007</span></p>
+@if (Model.Hub.IsQuiet(Model.Rules))
+{
+    <div class="alert alert-success py-2">Quiet kitchen: @((Model.Rules.QuietRate * 100).ToString("0"))% off food, up to @Vnd(Model.Rules.QuietMax).</div>
+}
+@if (Model.Errors.Count > 0)
+{
+    <div class="alert alert-danger"><ul class="mb-0">@foreach (var e in Model.Errors) { <li>@e</li> }</ul></div>
+}
+<form method="post" asp-action="Quote">
+    <input type="hidden" name="HubId" value="@Model.Hub.Id" />
+    <div class="row g-4">
+        <div class="col-lg-7">
+            @foreach (var brand in Model.Menu.GroupBy(m => m.BrandName))
+            {
+                <div class="card p-3 mb-3">
+                    <h2 class="h5">@brand.Key</h2>
+                    <table class="table table-sm align-middle mb-0">
+                        @foreach (var m in brand)
+                        {
+                            Model.Form.Quantities.TryGetValue(m.Id, out var q);
+                            <tr class="@(m.IsAvailable ? "" : "text-muted")">
+                                <td><b>@m.NameEn</b><br /><span class="small">@m.NameVi</span></td>
+                                <td class="text-end">@Vnd(m.Price)</td>
+                                <td class="text-end" style="width:6rem">
+                                    @if (m.IsAvailable)
+                                    {
+                                        <input type="number" class="form-control form-control-sm qty" min="0" max="20" name="Quantities[@m.Id]" value="@q" aria-label="Quantity of @m.NameEn" />
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-secondary">Sold out</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="col-lg-5">
+            <div class="card p-3">
+                <label class="form-label fw-bold" for="AddressId">Deliver to</label>
+                <select class="form-select mb-3" id="AddressId" name="AddressId">
+                    @foreach (var a in Model.Addresses)
+                    {
+                        <option value="@a.Id" selected="@(a.Id == Model.Form.AddressId)">@a.Label: @a.Street, @a.District@(a.IsHotel ? " (hotel)" : "")</option>
+                    }
+                </select>
+                <label class="form-label fw-bold" for="VoucherCode">Voucher (optional, one per order)</label>
+                <input class="form-control mb-3" id="VoucherCode" name="VoucherCode" value="@Model.Form.VoucherCode" placeholder="e.g. WELCOME10" />
+                <div class="fw-bold mb-1">Payment</div>
+                @foreach (var pm in Model.PaymentMethods)
+                {
+                    var label = pm switch { PaymentMethod.COD => "Cash on delivery", PaymentMethod.EWallet => "E-wallet (MoMo, ZaloPay, VNPay)", _ => "International card (Visa, Mastercard)" };
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="PaymentMethod" id="pm-@pm" value="@pm" checked="@(pm == Model.Form.PaymentMethod)" />
+                        <label class="form-check-label" for="pm-@pm">@label</label>
+                    </div>
+                }
+                <button class="btn btn-accent w-100 mt-3">Show full price</button>
+            </div>
+        </div>
+    </div>
+</form>

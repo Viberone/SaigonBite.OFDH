@@ -1,0 +1,37 @@
+@model VoucherEditVM
+@{
+    var v = Model.Voucher;
+    var s = v.StatusOn(Model.Today);
+    ViewData["Title"] = "Voucher " + v.Code;
+}
+<h1>Voucher @v.Code <span class="badge text-bg-light border fs-6 align-middle">@s</span></h1>
+<p class="text-muted"><span class="uc-tag">UC15 Manage Vouchers · 523C0007</span></p>
+<div class="card p-3 mb-3" style="max-width:40rem">
+    <dl class="row mb-0">
+        <dt class="col-sm-4">Description</dt><dd class="col-sm-8">@v.Description</dd>
+        <dt class="col-sm-4">Discount</dt><dd class="col-sm-8">@v.DiscountText, on the food subtotal only</dd>
+        <dt class="col-sm-4">Minimum order</dt><dd class="col-sm-8">@Vnd(v.MinOrderValue)</dd>
+        <dt class="col-sm-4">Valid</dt><dd class="col-sm-8">@v.StartDate.ToString("dd/MM/yyyy") to @v.EndDate.ToString("dd/MM/yyyy")</dd>
+        <dt class="col-sm-4">Used</dt><dd class="col-sm-8">@v.UsedCount of @v.UsageLimit (once per customer)</dd>
+        <dt class="col-sm-4">Created</dt><dd class="col-sm-8">@v.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+    </dl>
+</div>
+<div class="d-flex gap-2">
+    @if (v.CanEdit(Model.Today))
+    {
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@v.Id">Edit</a>
+    }
+    @if (s == VoucherStatus.Draft)
+    {
+        <form method="post" asp-action="Activate" asp-route-id="@v.Id"><button class="btn btn-accent">Activate</button></form>
+    }
+    @if (s is VoucherStatus.Active or VoucherStatus.Expired)
+    {
+        <form method="post" asp-action="Deactivate" asp-route-id="@v.Id"><button class="btn btn-outline-danger">Deactivate</button></form>
+    }
+    @if (v.CanDelete)
+    {
+        <form method="post" asp-action="Delete" asp-route-id="@v.Id"><button class="btn btn-outline-danger">Delete draft</button></form>
+    }
+    <a class="btn btn-link" asp-action="Index">All vouchers</a>
+</div>

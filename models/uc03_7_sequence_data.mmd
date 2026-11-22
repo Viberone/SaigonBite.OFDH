@@ -1,0 +1,47 @@
+---
+title: UC03 Sequence diagram, data access · 523C0007 · AI-assisted
+---
+sequenceDiagram
+    actor C as :Customer
+    participant QV as :OrderQuoteView
+    participant OC as :OrderController
+    participant RD as :RuleDAO
+    participant HD as :HubDAO
+    participant MD as :MenuItemDAO
+    participant MS as :IMapService
+    participant VD as :VoucherDAO
+    participant OD as :OrderDAO
+    participant G as :IPaymentGateway
+    participant DB as SQLite
+    C->>QV: click "Confirm order"
+    QV->>OC: POST Place(form)
+    OC->>RD: Load()
+    RD->>DB: SELECT rule_key, rule_value FROM business_rule
+    OC->>HD: GetById(hubId)
+    HD->>DB: SELECT hub + COUNT(active orders)
+    OC->>MD: GetMenu(hubId)
+    MD->>DB: SELECT menu_item JOIN hub_menu_item
+    OC->>MS: DistanceKm(hubId, district)
+    MS->>DB: SELECT distance_km FROM district_distance
+    opt voucher code entered
+        OC->>VD: GetByCode(code)
+        VD->>DB: SELECT * FROM voucher WHERE code = ?
+        OC->>OD: CustomerUsedVoucher(customerId, voucherId)
+        OD->>DB: SELECT COUNT(*) FROM orders WHERE customer_id = ? AND voucher_id = ?
+    end
+    Note over OC: Order.Place(...), PriceCalculator.Quote(...) as in the domain sequence diagram
+    opt online payment
+        OC->>G: Authorise(method, total, customerRef)
+        G-->>OC: gatewayRef
+    end
+    OC->>OD: InsertPlaced(order, payment, busyLoad)
+    OD->>DB: BEGIN, SELECT active orders vs capacity
+    alt hub became busy
+        OD-->>OC: HubBusyException
+        OC->>G: Void(gatewayRef)
+        OC-->>C: HubBusy view (quieter hubs)
+    else
+        OD->>DB: INSERT orders, order_line x n, payment, UPDATE voucher used_count, COMMIT
+        OD-->>OC: orderId
+        OC-->>C: redirect to Details view (receipt)
+    end

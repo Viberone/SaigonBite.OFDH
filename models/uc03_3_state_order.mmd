@@ -1,0 +1,22 @@
+---
+title: Order state machine (author 523C0007, AI-assisted)
+---
+stateDiagram-v2
+    direction LR
+    [*] --> Placed : confirmOrder() [hub not busy] / save order, authorise payment
+    Placed --> Confirmed : confirm() by kitchen
+    Placed --> Cancelled : cancel() by customer / void payment, return voucher use
+    Placed --> Rejected : reject(reason) by kitchen / void payment, return voucher use
+    Confirmed --> Preparing : startPreparing()
+    Preparing --> ReadyForPickup : markReady()
+    ReadyForPickup --> OutForDelivery : pickUp() by shipper
+    OutForDelivery --> Delivered : confirmDelivered() / capture or collect payment
+    OutForDelivery --> DeliveryFailed : reportFailure(reason) / void payment
+    Delivered --> [*]
+    Cancelled --> [*]
+    Rejected --> [*]
+    DeliveryFailed --> [*]
+    note right of Placed
+        Active states (Placed, Confirmed,
+        Preparing) count toward hub load
+    end note

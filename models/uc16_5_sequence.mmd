@@ -1,0 +1,22 @@
+---
+title: UC16 Sequence diagram · 523C0001 · AI-assisted
+---
+sequenceDiagram
+    actor M as :Manager
+    participant RC as :ReportController
+    participant RD as :ReportDAO
+    participant MR as :ManagementReport
+    M->>RC: Index(from, to, hubId)
+    RC->>RC: default period = last 14 days
+    alt from > to or period > 92 days
+        RC->>RC: correct the period, add message
+    end
+    RC->>RD: Build(from, to, hubId)
+    RD->>RD: Sales(from, to, hubId)
+    RD->>RD: Workload(from, to, hubId)
+    RD->>RD: DeliveryPerformance(from, to, hubId)
+    RD->>RD: TopItems(from, to, hubId)
+    RD->>MR: new ManagementReport(rows)
+    RD-->>RC: report
+    RC->>MR: SalesTotal
+    RC-->>M: Report view

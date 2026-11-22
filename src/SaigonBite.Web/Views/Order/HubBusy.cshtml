@@ -1,0 +1,17 @@
+@model HubBusyVM
+@{ ViewData["Title"] = "Hub is busy"; }
+<h1>@Model.Hub.Name is busy</h1>
+<div class="alert alert-warning">The kitchen is at full capacity (@Model.Hub.ActiveOrders of @Model.Hub.Capacity orders), so it cannot take new orders right now. Try a quieter hub nearby:</div>
+@if (Model.Alternatives.Count == 0)
+{
+    <p>All hubs near you are busy. Please try again in a few minutes.</p>
+}
+<div class="list-group">
+@foreach (var c in Model.Alternatives)
+{
+    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" asp-action="New" asp-route-hubId="@c.Hub.Id">
+        <span><b>@c.Hub.Name</b> · @c.Hub.District @(c.DistanceKm is double km ? $"· {km:0.0} km from your {c.FromAddress}" : "")</span>
+        <span class="badge load-@c.LoadLabel">@c.LoadLabel</span>
+    </a>
+}
+</div>
