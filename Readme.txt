@@ -6,9 +6,8 @@ Members
   523C0001  Nguyen Hoang Minh   UC10 Deliver an Order, UC16 Produce Management Reports
 
 Links (fill in before submitting)
-  GitHub repository (tagged release v1.0-part2):  <add link>
-  Figma prototype:                                <add link>
-  Video (Part 3):                                 <add link>
+  GitHub repository (tagged release v1.0-part2):  https://github.com/Viberone/SaigonBite.OFDH
+  Figma prototype:                                https://www.figma.com/design/omwXkYCDtU3yOn3mJifQCd/RAD_FINAL?node-id=0-1&t=Ho4jgDBLZETiU4JI-1
 
 Contents of this folder
   TeamF6_BRS_SRS_for_SaigonBite.pdf / .docx   Part 2 report (BRS and SRS)
