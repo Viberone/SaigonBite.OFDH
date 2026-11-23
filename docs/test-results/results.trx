@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bd29c34a-0e01-4e98-ae89-f5ee15c61f08" name="Admin@DESKTOP-3M8IUHU 2026-11-12 18:16:22" runUser="DESKTOP-3M8IUHU\Admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-12T18:16:22.8233294+07:00" queuing="2026-11-12T18:16:22.8233298+07:00" start="2026-11-12T18:16:21.6427055+07:00" finish="2026-11-12T18:16:24.8478600+07:00" />
+  <TestSettings name="default" id="0e76ea8d-c6d4-432c-9af1-b761343da1eb">
+    <Deployment runDeploymentRoot="Admin_DESKTOP-3M8IUHU_2026-11-12_18_16_22" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="6e49b34f-fc8b-4add-8a27-4a08ad2f54f4" testId="aa08bfd0-5ac0-c816-ab5a-de92fbdf8993" testName="TC-15-07 Delete: an unused Draft is deleted; a voucher that has been active is kept" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1760458" startTime="2026-11-12T18:16:23.6942113+07:00" endTime="2026-11-12T18:16:23.8703017+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6e49b34f-fc8b-4add-8a27-4a08ad2f54f4" />
+    <UnitTestResult executionId="fae99bad-dfa8-46bd-9f54-752623034581" testId="7b7d2399-bce3-bf1c-53a7-ee6c9ed4d70d" testName="TC-16-05 An invalid period is corrected with a message" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2246114" startTime="2026-11-12T18:16:23.4464662+07:00" endTime="2026-11-12T18:16:23.6710111+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fae99bad-dfa8-46bd-9f54-752623034581" />
+    <UnitTestResult executionId="f32ee32c-c025-4726-9c57-e88d0d82bf9e" testId="4df73002-56b7-e177-f625-63edacfa8746" testName="TC-INT-01 Voucher → order → kitchen → delivery → report work together in one system" computerName="DESKTOP-3M8IUHU" duration="00:00:00.4390905" startTime="2026-11-12T18:16:22.2164651+07:00" endTime="2026-11-12T18:16:22.6570762+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f32ee32c-c025-4726-9c57-e88d0d82bf9e" />
+    <UnitTestResult executionId="33c08e5f-403b-4bff-9b4f-0bb47474a101" testId="4f6eb63d-f146-5206-6336-9f5fd2b2ac32" testName="TC-03-05 An address beyond 8 km is refused; no order is created" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1180801" startTime="2026-11-12T18:16:24.1349907+07:00" endTime="2026-11-12T18:16:24.2530440+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33c08e5f-403b-4bff-9b4f-0bb47474a101" />
+    <UnitTestResult executionId="fef50548-ad06-4f9e-a990-7c70d6c28e9c" testId="ddec94f1-8de6-0a81-bf2d-d02ea99ec334" testName="TC-16-06 Producing reports changes no data" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2182687" startTime="2026-11-12T18:16:22.9988647+07:00" endTime="2026-11-12T18:16:23.2171139+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fef50548-ad06-4f9e-a990-7c70d6c28e9c" />
+    <UnitTestResult executionId="d9eabe96-f72f-4037-957d-b2c41a8a8c70" testId="32b1adab-6ee2-5c5f-241f-f03bd576b448" testName="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 8, fee: 45000)" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2164660" startTime="2026-11-12T18:16:23.1981795+07:00" endTime="2026-11-12T18:16:23.4144939+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d9eabe96-f72f-4037-957d-b2c41a8a8c70" />
+    <UnitTestResult executionId="8b9d2896-587a-4e18-9026-ea6a265184b8" testId="32daef2c-f80b-3174-c4a5-dfd77a63bcb0" testName="TC-16-02 Workload: orders placed per hub, including rejected and cancelled ones" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2243871" startTime="2026-11-12T18:16:22.5559735+07:00" endTime="2026-11-12T18:16:22.7906690+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b9d2896-587a-4e18-9026-ea6a265184b8" />
+    <UnitTestResult executionId="819e1e43-e0df-4bc2-92a1-b25b919bfa9d" testId="c3513c7d-be15-cd52-5198-27936fa46c72" testName="TC-03-07 A local customer cannot pay by international card" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1682196" startTime="2026-11-12T18:16:23.8215960+07:00" endTime="2026-11-12T18:16:23.9896975+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="819e1e43-e0df-4bc2-92a1-b25b919bfa9d" />
+    <UnitTestResult executionId="18c3d3d8-33f7-4be3-96c9-b4162dbcd0d0" testId="f2589ced-5596-4a94-dc95-2106b197d565" testName="TC-15-01 Create: a valid voucher is saved as Draft with an upper-case code and no uses" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2390337" startTime="2026-11-12T18:16:22.5559532+07:00" endTime="2026-11-12T18:16:22.7931848+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18c3d3d8-33f7-4be3-96c9-b4162dbcd0d0" />
+    <UnitTestResult executionId="20eb5a0a-9181-4114-b9f7-07e9f942187b" testId="086316ba-cb24-7a48-fec1-dfa9d7dcbb4d" testName="TC-10-08 Report failure: delivery Failed with reason, order DeliveryFailed, payment Voided" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1688538" startTime="2026-11-12T18:16:23.9229269+07:00" endTime="2026-11-12T18:16:24.0917369+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20eb5a0a-9181-4114-b9f7-07e9f942187b" />
+    <UnitTestResult executionId="31b74946-56e1-44d3-a216-d672e52d9a13" testId="03048b86-e260-3907-16b6-cd8b2a01c7cc" testName="TC-16-04 Delivery performance: a new on-time delivery is counted in the report" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2289354" startTime="2026-11-12T18:16:23.2173235+07:00" endTime="2026-11-12T18:16:23.4462242+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31b74946-56e1-44d3-a216-d672e52d9a13" />
+    <UnitTestResult executionId="6ec81ac7-1d4b-4f42-8b88-24a5e0d3f8a4" testId="f22123f9-9a02-cec2-57e0-d7f8a23b56d4" testName="TC-03-03 A quiet hub gives 10% off the food subtotal" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2272206" startTime="2026-11-12T18:16:23.4157365+07:00" endTime="2026-11-12T18:16:23.6419080+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ec81ac7-1d4b-4f42-8b88-24a5e0d3f8a4" />
+    <UnitTestResult executionId="fafbc606-283b-4779-a522-1890bdfe5f78" testId="02c38af8-4e34-8c1e-995c-550e009a8f61" testName="TC-10-04 Pick up: delivery PickedUp and order OutForDelivery" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1809429" startTime="2026-11-12T18:16:23.7424068+07:00" endTime="2026-11-12T18:16:23.9226978+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fafbc606-283b-4779-a522-1890bdfe5f78" />
+    <UnitTestResult executionId="0123c11f-dc46-4bed-b779-cef5e87891d8" testId="6b452fd6-d1b9-aafc-6289-68456d54d124" testName="TC-10-01 Accept: a ready order gets an Assigned delivery for this shipper" computerName="DESKTOP-3M8IUHU" duration="00:00:00.3434849" startTime="2026-11-12T18:16:22.2150805+07:00" endTime="2026-11-12T18:16:22.5616276+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0123c11f-dc46-4bed-b779-cef5e87891d8" />
+    <UnitTestResult executionId="95a59542-3e41-4b78-82dc-4839a9f1ed95" testId="2ab869d3-0ced-3efc-d537-b409e4fe6737" testName="TC-03-10 If the hub fills up between the quote and the confirmation, the order is refused" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1210539" startTime="2026-11-12T18:16:24.6778867+07:00" endTime="2026-11-12T18:16:24.7989699+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95a59542-3e41-4b78-82dc-4839a9f1ed95" />
+    <UnitTestResult executionId="ed9bad4d-cc89-4fbd-83e1-4838ddfdfbb6" testId="986d980a-fd25-f044-26c6-281302e8b654" testName="TC-16-03 Hub filter: only the chosen hub is reported" computerName="DESKTOP-3M8IUHU" duration="00:00:00.3351209" startTime="2026-11-12T18:16:22.2164233+07:00" endTime="2026-11-12T18:16:22.5537134+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed9bad4d-cc89-4fbd-83e1-4838ddfdfbb6" />
+    <UnitTestResult executionId="ae99f2fe-ff90-46bb-b112-7fab48f4ee2b" testId="3de2d850-6fa8-da30-6302-1081bdf1fc2e" testName="TC-10-09 A delivery cannot be completed before it is picked up" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2088846" startTime="2026-11-12T18:16:23.5328384+07:00" endTime="2026-11-12T18:16:23.7416026+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae99f2fe-ff90-46bb-b112-7fab48f4ee2b" />
+    <UnitTestResult executionId="65b303ad-3eda-42bc-8332-6de969f50bb7" testId="ec644c0b-9439-2cc8-1bd0-b952da4ec21e" testName="TC-15-04 Update: activating a Draft makes it Active and usable on an order" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2178119" startTime="2026-11-12T18:16:23.0357242+07:00" endTime="2026-11-12T18:16:23.2514873+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65b303ad-3eda-42bc-8332-6de969f50bb7" />
+    <UnitTestResult executionId="dcb9d1a3-98fa-467e-96e6-b86ee850ff1d" testId="2b24230b-ab63-6125-fc2b-700dfb809fb2" testName="TC-15-03 Read: the list shows every voucher with its derived status" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2108055" startTime="2026-11-12T18:16:23.4832030+07:00" endTime="2026-11-12T18:16:23.6939711+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcb9d1a3-98fa-467e-96e6-b86ee850ff1d" />
+    <UnitTestResult executionId="d652f7cb-33dc-4530-9e27-3569dc3b12de" testId="500f3178-7ec6-db30-25c4-8bb286e6fd4b" testName="TC-10-02 Accept: an order already taken cannot be taken by a second shipper" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2448911" startTime="2026-11-12T18:16:22.8017637+07:00" endTime="2026-11-12T18:16:23.0465515+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d652f7cb-33dc-4530-9e27-3569dc3b12de" />
+    <UnitTestResult executionId="dd596260-df59-4c70-96cc-a1d460d5997b" testId="99d6b9b8-2d37-2411-9721-dd0587e2f0de" testName="TC-15-06 Update: a deactivated voucher can no longer be used on an order" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2401777" startTime="2026-11-12T18:16:22.7933439+07:00" endTime="2026-11-12T18:16:23.0335298+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dd596260-df59-4c70-96cc-a1d460d5997b" />
+    <UnitTestResult executionId="7fbce73a-7ca0-4fca-bacc-c626ca184ca2" testId="d4f73645-f495-a26d-79ef-aca52ddc99df" testName="TC-15-02 Create: invalid data or a duplicate code is refused and nothing is saved" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1618516" startTime="2026-11-12T18:16:23.8705391+07:00" endTime="2026-11-12T18:16:24.0321922+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7fbce73a-7ca0-4fca-bacc-c626ca184ca2" />
+    <UnitTestResult executionId="34620086-90be-447a-aaf4-f076c177b161" testId="2e37a666-9e6e-c18a-b2c0-0454000b3bd4" testName="TC-03-04 A busy hub refuses the order and suggests quieter hubs" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1449543" startTime="2026-11-12T18:16:23.9899152+07:00" endTime="2026-11-12T18:16:24.1347811+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34620086-90be-447a-aaf4-f076c177b161" />
+    <UnitTestResult executionId="df5e9e61-55fe-4a90-bc05-c70b31d88c84" testId="a65110ed-eef4-8f4f-9ef4-bf63e9337d3e" testName="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 2.1000000000000001, fee: 20000)" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2282508" startTime="2026-11-12T18:16:22.5477354+07:00" endTime="2026-11-12T18:16:22.7648047+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df5e9e61-55fe-4a90-bc05-c70b31d88c84" />
+    <UnitTestResult executionId="9b929278-7c1b-4ed4-aac6-65d7fdac8043" testId="400793d8-0aff-69b5-4c19-fe9c36bea515" testName="TC-10-05 Deliver cash order: exact cash recorded, payment Collected, order Delivered" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2481250" startTime="2026-11-12T18:16:23.2845042+07:00" endTime="2026-11-12T18:16:23.5325610+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b929278-7c1b-4ed4-aac6-65d7fdac8043" />
+    <UnitTestResult executionId="ab010be4-6343-48e1-bd53-0f9a6e1184c9" testId="798b6d1f-ccea-3f85-4c21-7f00dc3eccf7" testName="TC-03-06 A customer cannot use the same voucher twice" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1049336" startTime="2026-11-12T18:16:24.5728437+07:00" endTime="2026-11-12T18:16:24.6777190+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab010be4-6343-48e1-bd53-0f9a6e1184c9" />
+    <UnitTestResult executionId="c0a089c1-74b1-4cc2-9ee7-1ec00405c7e9" testId="5c08a958-1b37-c266-6b8f-f259cad36f1a" testName="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 4.2000000000000002, fee: 30000)" computerName="DESKTOP-3M8IUHU" duration="00:00:00.3127682" startTime="2026-11-12T18:16:22.2163852+07:00" endTime="2026-11-12T18:16:22.5365668+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0a089c1-74b1-4cc2-9ee7-1ec00405c7e9" />
+    <UnitTestResult executionId="d394f31e-ac38-4d12-b709-ac50d4c7e634" testId="dc807c24-7ea6-53e8-77a1-938072a5e685" testName="TC-10-07 Deliver card order: online payment Captured, no cash recorded" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2375210" startTime="2026-11-12T18:16:23.0466965+07:00" endTime="2026-11-12T18:16:23.2842669+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d394f31e-ac38-4d12-b709-ac50d4c7e634" />
+    <UnitTestResult executionId="180be5e8-932f-4b5e-a610-00b7f008e415" testId="843c41c8-1dfc-959c-2147-6434c7ed6763" testName="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 1.5, fee: 15000)" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2079107" startTime="2026-11-12T18:16:22.9898638+07:00" endTime="2026-11-12T18:16:23.1978903+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="180be5e8-932f-4b5e-a610-00b7f008e415" />
+    <UnitTestResult executionId="07ee9880-8bae-4bbc-8c7e-c5ec2322b6f7" testId="bdd5bc70-aefc-3aa4-ca3b-43c0b75a8c71" testName="TC-10-03 Accept: a shipper of another hub cannot take the order" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1305646" startTime="2026-11-12T18:16:24.0919471+07:00" endTime="2026-11-12T18:16:24.2224124+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="07ee9880-8bae-4bbc-8c7e-c5ec2322b6f7" />
+    <UnitTestResult executionId="a2a5b7c3-6256-4407-bca3-1e7ff21ce26b" testId="6e49a9e1-1dc4-7709-a5f6-02f9314f1e95" testName="TC-03-08 A sold-out item cannot be ordered" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1793067" startTime="2026-11-12T18:16:23.6421355+07:00" endTime="2026-11-12T18:16:23.8213418+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2a5b7c3-6256-4407-bca3-1e7ff21ce26b" />
+    <UnitTestResult executionId="0ad26311-8ec6-429d-88ad-7bf86e29661d" testId="3a69cada-4e53-d725-7e21-0f91fb539571" testName="TC-03-09 Cancel while Placed: order Cancelled, payment voided, voucher use returned; later cancel refused" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1203647" startTime="2026-11-12T18:16:24.4524038+07:00" endTime="2026-11-12T18:16:24.5726693+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ad26311-8ec6-429d-88ad-7bf86e29661d" />
+    <UnitTestResult executionId="b16eef0f-4581-46ea-9468-e3dcd49e966e" testId="186f1a40-1f87-43ee-10c4-143b7c4a5e97" testName="TC-15-05 Update: an Active voucher keeps its terms; only end date, limit and description change" computerName="DESKTOP-3M8IUHU" duration="00:00:00.3327984" startTime="2026-11-12T18:16:22.2164442+07:00" endTime="2026-11-12T18:16:22.5544659+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b16eef0f-4581-46ea-9468-e3dcd49e966e" />
+    <UnitTestResult executionId="6b41ec71-48a0-4cc3-be4c-2fd251806d96" testId="ad33f4f9-7ab8-50c7-91df-a4ba58b42781" testName="TC-03-02 Tourist card order with a voucher: payment authorised, voucher discount applied and counted" computerName="DESKTOP-3M8IUHU" duration="00:00:00.1042532" startTime="2026-11-12T18:16:24.3480616+07:00" endTime="2026-11-12T18:16:24.4521585+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b41ec71-48a0-4cc3-be4c-2fd251806d96" />
+    <UnitTestResult executionId="2a46c727-2e32-41a6-b2f6-49281843eeaf" testId="04a0e95e-8ec7-fed1-6d96-1b563dcc687f" testName="TC-10-06 Deliver cash order: a wrong cash amount is refused and nothing changes" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2397927" startTime="2026-11-12T18:16:22.5618594+07:00" endTime="2026-11-12T18:16:22.8015486+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a46c727-2e32-41a6-b2f6-49281843eeaf" />
+    <UnitTestResult executionId="f626c97a-2673-440b-8ad9-bc711262871f" testId="ca64538d-4981-a439-02d7-f11f7d309f6b" testName="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 2, fee: 15000)" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2247799" startTime="2026-11-12T18:16:22.7905850+07:00" endTime="2026-11-12T18:16:22.9897319+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f626c97a-2673-440b-8ad9-bc711262871f" />
+    <UnitTestResult executionId="e30338f9-048e-46d2-90c3-95cfc0b47ab1" testId="eb3ad0a9-5625-1edb-c7d7-998e4f905ab1" testName="TC-16-01 Sales: revenue and order count equal the delivered orders in the period" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2200731" startTime="2026-11-12T18:16:22.7910393+07:00" endTime="2026-11-12T18:16:22.9987189+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e30338f9-048e-46d2-90c3-95cfc0b47ab1" />
+    <UnitTestResult executionId="280ff36e-a70f-4853-8132-210beef31ae4" testId="a3837e39-e978-47ce-c558-5606ca942c65" testName="TC-15-08 A voucher at its usage limit is Expired" computerName="DESKTOP-3M8IUHU" duration="00:00:00.2313744" startTime="2026-11-12T18:16:23.2517684+07:00" endTime="2026-11-12T18:16:23.4829898+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="280ff36e-a70f-4853-8132-210beef31ae4" />
+    <UnitTestResult executionId="b3ccef91-6a9b-4b82-9461-a68bfccdd77c" testId="94ec5762-cc01-562d-69ef-6ed22a132799" testName="TC-03-01 Cash order at a normal hub is Placed with lines, correct total and a pending payment" computerName="DESKTOP-3M8IUHU" duration="00:00:00.0946010" startTime="2026-11-12T18:16:24.2537942+07:00" endTime="2026-11-12T18:16:24.3478431+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3ccef91-6a9b-4b82-9461-a68bfccdd77c" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TC-03-03 A quiet hub gives 10% off the food subtotal" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="f22123f9-9a02-cec2-57e0-d7f8a23b56d4">
+      <Execution id="6ec81ac7-1d4b-4f42-8b88-24a5e0d3f8a4" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="QuietHubDiscount" />
+    </UnitTest>
+    <UnitTest name="TC-03-10 If the hub fills up between the quote and the confirmation, the order is refused" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="2ab869d3-0ced-3efc-d537-b409e4fe6737">
+      <Execution id="95a59542-3e41-4b78-82dc-4839a9f1ed95" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="HubFillsUpBeforeConfirm" />
+    </UnitTest>
+    <UnitTest name="TC-INT-01 Voucher → order → kitchen → delivery → report work together in one system" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="4df73002-56b7-e177-f625-63edacfa8746">
+      <Execution id="f32ee32c-c025-4726-9c57-e88d0d82bf9e" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.IntegrationTests" name="FullScenario" />
+    </UnitTest>
+    <UnitTest name="TC-16-02 Workload: orders placed per hub, including rejected and cancelled ones" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="32daef2c-f80b-3174-c4a5-dfd77a63bcb0">
+      <Execution id="8b9d2896-587a-4e18-9026-ea6a265184b8" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="WorkloadCountsAllOrders" />
+    </UnitTest>
+    <UnitTest name="TC-03-07 A local customer cannot pay by international card" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="c3513c7d-be15-cd52-5198-27936fa46c72">
+      <Execution id="819e1e43-e0df-4bc2-92a1-b25b919bfa9d" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="LocalCannotPayByCard" />
+    </UnitTest>
+    <UnitTest name="TC-15-01 Create: a valid voucher is saved as Draft with an upper-case code and no uses" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="f2589ced-5596-4a94-dc95-2106b197d565">
+      <Execution id="18c3d3d8-33f7-4be3-96c9-b4162dbcd0d0" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="CreateSavesDraft" />
+    </UnitTest>
+    <UnitTest name="TC-15-02 Create: invalid data or a duplicate code is refused and nothing is saved" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="d4f73645-f495-a26d-79ef-aca52ddc99df">
+      <Execution id="7fbce73a-7ca0-4fca-bacc-c626ca184ca2" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="CreateRejectsInvalid" />
+    </UnitTest>
+    <UnitTest name="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 4.2000000000000002, fee: 30000)" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="5c08a958-1b37-c266-6b8f-f259cad36f1a">
+      <Execution id="c0a089c1-74b1-4cc2-9ee7-1ec00405c7e9" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="DeliveryFeeTable" />
+    </UnitTest>
+    <UnitTest name="TC-10-02 Accept: an order already taken cannot be taken by a second shipper" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="500f3178-7ec6-db30-25c4-8bb286e6fd4b">
+      <Execution id="d652f7cb-33dc-4530-9e27-3569dc3b12de" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="SecondShipperCannotTake" />
+    </UnitTest>
+    <UnitTest name="TC-10-03 Accept: a shipper of another hub cannot take the order" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="bdd5bc70-aefc-3aa4-ca3b-43c0b75a8c71">
+      <Execution id="07ee9880-8bae-4bbc-8c7e-c5ec2322b6f7" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="OtherHubShipperRefused" />
+    </UnitTest>
+    <UnitTest name="TC-03-09 Cancel while Placed: order Cancelled, payment voided, voucher use returned; later cancel refused" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="3a69cada-4e53-d725-7e21-0f91fb539571">
+      <Execution id="0ad26311-8ec6-429d-88ad-7bf86e29661d" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="CancelOnlyWhilePlaced" />
+    </UnitTest>
+    <UnitTest name="TC-10-04 Pick up: delivery PickedUp and order OutForDelivery" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="02c38af8-4e34-8c1e-995c-550e009a8f61">
+      <Execution id="fafbc606-283b-4779-a522-1890bdfe5f78" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="PickUpMovesOrderOut" />
+    </UnitTest>
+    <UnitTest name="TC-10-05 Deliver cash order: exact cash recorded, payment Collected, order Delivered" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="400793d8-0aff-69b5-4c19-fe9c36bea515">
+      <Execution id="9b929278-7c1b-4ed4-aac6-65d7fdac8043" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="DeliverCashOrder" />
+    </UnitTest>
+    <UnitTest name="TC-10-07 Deliver card order: online payment Captured, no cash recorded" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="dc807c24-7ea6-53e8-77a1-938072a5e685">
+      <Execution id="d394f31e-ac38-4d12-b709-ac50d4c7e634" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="DeliverCardOrder" />
+    </UnitTest>
+    <UnitTest name="TC-10-08 Report failure: delivery Failed with reason, order DeliveryFailed, payment Voided" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="086316ba-cb24-7a48-fec1-dfa9d7dcbb4d">
+      <Execution id="20eb5a0a-9181-4114-b9f7-07e9f942187b" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="ReportFailure" />
+    </UnitTest>
+    <UnitTest name="TC-15-08 A voucher at its usage limit is Expired" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="a3837e39-e978-47ce-c558-5606ca942c65">
+      <Execution id="280ff36e-a70f-4853-8132-210beef31ae4" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="UsageLimitExpires" />
+    </UnitTest>
+    <UnitTest name="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 8, fee: 45000)" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="32b1adab-6ee2-5c5f-241f-f03bd576b448">
+      <Execution id="d9eabe96-f72f-4037-957d-b2c41a8a8c70" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="DeliveryFeeTable" />
+    </UnitTest>
+    <UnitTest name="TC-16-01 Sales: revenue and order count equal the delivered orders in the period" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="eb3ad0a9-5625-1edb-c7d7-998e4f905ab1">
+      <Execution id="e30338f9-048e-46d2-90c3-95cfc0b47ab1" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="SalesMatchOrders" />
+    </UnitTest>
+    <UnitTest name="TC-15-03 Read: the list shows every voucher with its derived status" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="2b24230b-ab63-6125-fc2b-700dfb809fb2">
+      <Execution id="dcb9d1a3-98fa-467e-96e6-b86ee850ff1d" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="ListShowsDerivedStatus" />
+    </UnitTest>
+    <UnitTest name="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 2.1000000000000001, fee: 20000)" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="a65110ed-eef4-8f4f-9ef4-bf63e9337d3e">
+      <Execution id="df5e9e61-55fe-4a90-bc05-c70b31d88c84" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="DeliveryFeeTable" />
+    </UnitTest>
+    <UnitTest name="TC-16-06 Producing reports changes no data" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="ddec94f1-8de6-0a81-bf2d-d02ea99ec334">
+      <Execution id="fef50548-ad06-4f9e-a990-7c70d6c28e9c" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="ReadOnly" />
+    </UnitTest>
+    <UnitTest name="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 2, fee: 15000)" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="ca64538d-4981-a439-02d7-f11f7d309f6b">
+      <Execution id="f626c97a-2673-440b-8ad9-bc711262871f" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="DeliveryFeeTable" />
+    </UnitTest>
+    <UnitTest name="TC-15-07 Delete: an unused Draft is deleted; a voucher that has been active is kept" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="aa08bfd0-5ac0-c816-ab5a-de92fbdf8993">
+      <Execution id="6e49b34f-fc8b-4add-8a27-4a08ad2f54f4" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="DeleteOnlyDraft" />
+    </UnitTest>
+    <UnitTest name="TC-10-09 A delivery cannot be completed before it is picked up" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="3de2d850-6fa8-da30-6302-1081bdf1fc2e">
+      <Execution id="ae99f2fe-ff90-46bb-b112-7fab48f4ee2b" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="CannotCompleteBeforePickUp" />
+    </UnitTest>
+    <UnitTest name="TC-03-06 A customer cannot use the same voucher twice" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="798b6d1f-ccea-3f85-4c21-7f00dc3eccf7">
+      <Execution id="ab010be4-6343-48e1-bd53-0f9a6e1184c9" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="VoucherOncePerCustomer" />
+    </UnitTest>
+    <UnitTest name="TC-15-04 Update: activating a Draft makes it Active and usable on an order" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="ec644c0b-9439-2cc8-1bd0-b952da4ec21e">
+      <Execution id="65b303ad-3eda-42bc-8332-6de969f50bb7" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="ActivateDraft" />
+    </UnitTest>
+    <UnitTest name="TC-03-01 Cash order at a normal hub is Placed with lines, correct total and a pending payment" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="94ec5762-cc01-562d-69ef-6ed22a132799">
+      <Execution id="b3ccef91-6a9b-4b82-9461-a68bfccdd77c" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="CashOrderIsPlaced" />
+    </UnitTest>
+    <UnitTest name="TC-03-11 Delivery fee: 15,000 VND up to 2 km, then 5,000 VND per started km(km: 1.5, fee: 15000)" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="843c41c8-1dfc-959c-2147-6434c7ed6763">
+      <Execution id="180be5e8-932f-4b5e-a610-00b7f008e415" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="DeliveryFeeTable" />
+    </UnitTest>
+    <UnitTest name="TC-03-08 A sold-out item cannot be ordered" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="6e49a9e1-1dc4-7709-a5f6-02f9314f1e95">
+      <Execution id="a2a5b7c3-6256-4407-bca3-1e7ff21ce26b" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="SoldOutItem" />
+    </UnitTest>
+    <UnitTest name="TC-15-06 Update: a deactivated voucher can no longer be used on an order" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="99d6b9b8-2d37-2411-9721-dd0587e2f0de">
+      <Execution id="dd596260-df59-4c70-96cc-a1d460d5997b" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="DeactivateStopsUse" />
+    </UnitTest>
+    <UnitTest name="TC-16-03 Hub filter: only the chosen hub is reported" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="986d980a-fd25-f044-26c6-281302e8b654">
+      <Execution id="ed9bad4d-cc89-4fbd-83e1-4838ddfdfbb6" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="HubFilter" />
+    </UnitTest>
+    <UnitTest name="TC-03-04 A busy hub refuses the order and suggests quieter hubs" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="2e37a666-9e6e-c18a-b2c0-0454000b3bd4">
+      <Execution id="34620086-90be-447a-aaf4-f076c177b161" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="BusyHubRefuses" />
+    </UnitTest>
+    <UnitTest name="TC-15-05 Update: an Active voucher keeps its terms; only end date, limit and description change" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="186f1a40-1f87-43ee-10c4-143b7c4a5e97">
+      <Execution id="b16eef0f-4581-46ea-9468-e3dcd49e966e" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC15_ManageVouchersTests" name="EditActiveKeepsTerms" />
+    </UnitTest>
+    <UnitTest name="TC-16-04 Delivery performance: a new on-time delivery is counted in the report" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="03048b86-e260-3907-16b6-cd8b2a01c7cc">
+      <Execution id="31b74946-56e1-44d3-a216-d672e52d9a13" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="NewDeliveryIsCounted" />
+    </UnitTest>
+    <UnitTest name="TC-03-02 Tourist card order with a voucher: payment authorised, voucher discount applied and counted" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="ad33f4f9-7ab8-50c7-91df-a4ba58b42781">
+      <Execution id="6b41ec71-48a0-4cc3-be4c-2fd251806d96" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="TouristCardOrderWithVoucher" />
+    </UnitTest>
+    <UnitTest name="TC-03-05 An address beyond 8 km is refused; no order is created" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="4f6eb63d-f146-5206-6336-9f5fd2b2ac32">
+      <Execution id="33c08e5f-403b-4bff-9b4f-0bb47474a101" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC03_PlaceOrderTests" name="OutsideRadius" />
+    </UnitTest>
+    <UnitTest name="TC-10-06 Deliver cash order: a wrong cash amount is refused and nothing changes" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="04a0e95e-8ec7-fed1-6d96-1b563dcc687f">
+      <Execution id="2a46c727-2e32-41a6-b2f6-49281843eeaf" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="WrongCashRefused" />
+    </UnitTest>
+    <UnitTest name="TC-16-05 An invalid period is corrected with a message" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="7b7d2399-bce3-bf1c-53a7-ee6c9ed4d70d">
+      <Execution id="fae99bad-dfa8-46bd-9f54-752623034581" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC16_ReportsTests" name="InvalidPeriod" />
+    </UnitTest>
+    <UnitTest name="TC-10-01 Accept: a ready order gets an Assigned delivery for this shipper" storage="c:\cs\cnpm\rad_final\part2\tests\saigonbite.tests\bin\debug\net10.0\saigonbite.tests.dll" id="6b452fd6-d1b9-aafc-6289-68456d54d124">
+      <Execution id="0123c11f-dc46-4bed-b779-cef5e87891d8" />
+      <TestMethod codeBase="C:\CS\CNPM\RAD_final\Part2\tests\SaigonBite.Tests\bin\Debug\net10.0\SaigonBite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SaigonBite.Tests.UC10_DeliverOrderTests" name="AcceptCreatesAssignedDelivery" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="aa08bfd0-5ac0-c816-ab5a-de92fbdf8993" executionId="6e49b34f-fc8b-4add-8a27-4a08ad2f54f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7b7d2399-bce3-bf1c-53a7-ee6c9ed4d70d" executionId="fae99bad-dfa8-46bd-9f54-752623034581" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4df73002-56b7-e177-f625-63edacfa8746" executionId="f32ee32c-c025-4726-9c57-e88d0d82bf9e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f6eb63d-f146-5206-6336-9f5fd2b2ac32" executionId="33c08e5f-403b-4bff-9b4f-0bb47474a101" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ddec94f1-8de6-0a81-bf2d-d02ea99ec334" executionId="fef50548-ad06-4f9e-a990-7c70d6c28e9c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32b1adab-6ee2-5c5f-241f-f03bd576b448" executionId="d9eabe96-f72f-4037-957d-b2c41a8a8c70" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32daef2c-f80b-3174-c4a5-dfd77a63bcb0" executionId="8b9d2896-587a-4e18-9026-ea6a265184b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3513c7d-be15-cd52-5198-27936fa46c72" executionId="819e1e43-e0df-4bc2-92a1-b25b919bfa9d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2589ced-5596-4a94-dc95-2106b197d565" executionId="18c3d3d8-33f7-4be3-96c9-b4162dbcd0d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="086316ba-cb24-7a48-fec1-dfa9d7dcbb4d" executionId="20eb5a0a-9181-4114-b9f7-07e9f942187b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03048b86-e260-3907-16b6-cd8b2a01c7cc" executionId="31b74946-56e1-44d3-a216-d672e52d9a13" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f22123f9-9a02-cec2-57e0-d7f8a23b56d4" executionId="6ec81ac7-1d4b-4f42-8b88-24a5e0d3f8a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02c38af8-4e34-8c1e-995c-550e009a8f61" executionId="fafbc606-283b-4779-a522-1890bdfe5f78" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b452fd6-d1b9-aafc-6289-68456d54d124" executionId="0123c11f-dc46-4bed-b779-cef5e87891d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ab869d3-0ced-3efc-d537-b409e4fe6737" executionId="95a59542-3e41-4b78-82dc-4839a9f1ed95" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="986d980a-fd25-f044-26c6-281302e8b654" executionId="ed9bad4d-cc89-4fbd-83e1-4838ddfdfbb6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3de2d850-6fa8-da30-6302-1081bdf1fc2e" executionId="ae99f2fe-ff90-46bb-b112-7fab48f4ee2b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ec644c0b-9439-2cc8-1bd0-b952da4ec21e" executionId="65b303ad-3eda-42bc-8332-6de969f50bb7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b24230b-ab63-6125-fc2b-700dfb809fb2" executionId="dcb9d1a3-98fa-467e-96e6-b86ee850ff1d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="500f3178-7ec6-db30-25c4-8bb286e6fd4b" executionId="d652f7cb-33dc-4530-9e27-3569dc3b12de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99d6b9b8-2d37-2411-9721-dd0587e2f0de" executionId="dd596260-df59-4c70-96cc-a1d460d5997b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4f73645-f495-a26d-79ef-aca52ddc99df" executionId="7fbce73a-7ca0-4fca-bacc-c626ca184ca2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e37a666-9e6e-c18a-b2c0-0454000b3bd4" executionId="34620086-90be-447a-aaf4-f076c177b161" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a65110ed-eef4-8f4f-9ef4-bf63e9337d3e" executionId="df5e9e61-55fe-4a90-bc05-c70b31d88c84" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="400793d8-0aff-69b5-4c19-fe9c36bea515" executionId="9b929278-7c1b-4ed4-aac6-65d7fdac8043" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="798b6d1f-ccea-3f85-4c21-7f00dc3eccf7" executionId="ab010be4-6343-48e1-bd53-0f9a6e1184c9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c08a958-1b37-c266-6b8f-f259cad36f1a" executionId="c0a089c1-74b1-4cc2-9ee7-1ec00405c7e9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc807c24-7ea6-53e8-77a1-938072a5e685" executionId="d394f31e-ac38-4d12-b709-ac50d4c7e634" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="843c41c8-1dfc-959c-2147-6434c7ed6763" executionId="180be5e8-932f-4b5e-a610-00b7f008e415" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdd5bc70-aefc-3aa4-ca3b-43c0b75a8c71" executionId="07ee9880-8bae-4bbc-8c7e-c5ec2322b6f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6e49a9e1-1dc4-7709-a5f6-02f9314f1e95" executionId="a2a5b7c3-6256-4407-bca3-1e7ff21ce26b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3a69cada-4e53-d725-7e21-0f91fb539571" executionId="0ad26311-8ec6-429d-88ad-7bf86e29661d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="186f1a40-1f87-43ee-10c4-143b7c4a5e97" executionId="b16eef0f-4581-46ea-9468-e3dcd49e966e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad33f4f9-7ab8-50c7-91df-a4ba58b42781" executionId="6b41ec71-48a0-4cc3-be4c-2fd251806d96" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04a0e95e-8ec7-fed1-6d96-1b563dcc687f" executionId="2a46c727-2e32-41a6-b2f6-49281843eeaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca64538d-4981-a439-02d7-f11f7d309f6b" executionId="f626c97a-2673-440b-8ad9-bc711262871f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eb3ad0a9-5625-1edb-c7d7-998e4f905ab1" executionId="e30338f9-048e-46d2-90c3-95cfc0b47ab1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a3837e39-e978-47ce-c558-5606ca942c65" executionId="280ff36e-a70f-4853-8132-210beef31ae4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="94ec5762-cc01-562d-69ef-6ed22a132799" executionId="b3ccef91-6a9b-4b82-9461-a68bfccdd77c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="39" executed="39" passed="39" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.07]   Discovering: SaigonBite.Tests&#xD;
+[xUnit.net 00:00:00.12]   Discovered:  SaigonBite.Tests&#xD;
+[xUnit.net 00:00:00.14]   Starting:    SaigonBite.Tests&#xD;
+[xUnit.net 00:00:02.75]   Finished:    SaigonBite.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
